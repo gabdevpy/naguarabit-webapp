@@ -1,0 +1,41 @@
+<!--template de lista de ciudades-->
+<div class="container">
+<p><h4>Ciudades</h4>
+    <input type="text" ng-model="busq1" placeholder=" Buscar..." auto-focus>
+</p>
+
+<table width="100%" class="table table-sm table-hover">
+	<tr>
+   <th>Código</th>
+   <th>Nombre</th>
+   <th>País</th>
+   <th>Observaciones</th>
+   <th>Datos relacionados</th>
+ </tr>
+ <tr ng-repeat="x in resultados | filter:busq1">
+  <td><a title="Ver detalles" href="#!/ciudad/{{ x.codigo }}">{{ x.codigo }}</a></td>
+  <td><a title="Ver detalles" href="#!/ciudad/{{ x.codigo }}">{{ x.nombre }}</a></td>
+  <td><a title="Ver detalles de país" href="#!/pais/{{ x.cod_pais }}">{{ x.cod_pais }}</a></td>
+  <td>{{ x.observ }}</td>
+  <!--Todo. pendiente. programar filtro en ctrl ciudades.js-->
+  <td><a title="Listar ciudades de este país" href="#!/ciudades/{{ x.cod_pais }}">Listar ciudades de {{ x.cod_pais }}</a></td>
+</table>
+
+  <button class="button2" type="button" ng-click="new()">Agregar</button>
+
+</div>
+
+
+<!--opiones para Agregar
+con link:
+  <a title="Agregar ciudad" href="#!/ciudad/new">Agregar</a>
+
+con boton:
+  <button title="Agregar ciudad" go-click="#!/ciudad/new">Agregar</button>
+ <button title="Agregar ciudad" href="location.href='#/ciudad/new'">Agregar</button>
+
+-->
+
+<!--opcion b, que ctrl de paises cambie url a pais/new
+  <a title="Agregar registro" href="#!/paises/new">Agregar</a>
+-->

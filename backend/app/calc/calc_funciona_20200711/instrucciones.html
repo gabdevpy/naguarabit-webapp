@@ -1,0 +1,77 @@
+<!--instrucciones de uso de la calculadora-->
+        <!--span style="font-weight: bold">Instrucciones</span-->
+        <br>
+        <span ng-show="paso==1"><h4>Paso 1</h4><br>
+          Indique el monto a enviar.<br>
+          Puede ingresarlo de 3 formas: <br>
+          1. En monto en la moneda local ({{data.nombre_plural_moneda1}}) <br>
+          2. En Bolívares a recibir(Bs.)<br>
+          3. En dólares ($USD)<br>
+          Al escribir en cualquier moneda, se calculan los montos equivalentes.<br>
+          <!--(<b>Gs.:</b> 60.000 a 3.000.000)<br-->
+        </span>
+        <span ng-show="paso==1"><br>
+          <span style="color:blue">
+            <b>Límites: </b><br>
+            1 a 200 dólares ($USD)<br></span>
+        </span>
+
+
+        <span ng-show="paso==2"><h4>Paso 2</h4><br>  
+          Elige la forma de pago para indicarte los datos correspondientes.
+          <!--Toma nota de estos datos para realizar tu pago a la plataforma.-->
+          <!--Luego de realizar el pago, nos indicaras un comprobante (sea foto o imagen escaneada), para verificación y posterior envío de los fondos a la cuenta especificada en 
+          -->
+          <!--span>{{data.nombre_pais1}}</span-->
+          </span>
+
+        <span ng-show="paso==3"><h4>Paso 3</h4>
+          <br>
+          Por favor realice el pago y adjunte los comprobantes de pago, en formato de imagen.
+        <br><br>
+        La tasa de cambio se mantiene por 90 minutos.<br><br>
+        Luego de ese tiempo se ajusta de forma automática la tasa de cambio para su transacción.<br><br>
+
+        Le quedan X minutos.
+        <!--Al PROCEDER se origina una solicitud de operación, para confirmar su pago.<br><br>-->
+        </span>
+
+        <span ng-show="paso==4"><h4>Paso 4</h4>
+          <br>Indique los datos de la cuenta bancaria a la que se enviará la remesa.<br><br>
+        Al realizar la remesa se le notificará por correo.
+        <!--Igualmente puede descargarlo.-->
+          <!--TODO. agregar esta mejora. para posteriores versiones
+          <br>
+          Si quiere transferir a mas de una cuenta, presione el boton <b>Agregar Otra Cuenta</b>, luego de grabar la primera cuenta.-->
+        </span>
+
+        <span ng-show="paso==5"><h4>Paso 5</h4><br>
+          Indique datos de usuario para el registro. <br><br>
+          Son usados para comunicarnos con usted, de manera oportuna. <br>
+          No serán compartidos, respetamos su privacidad.<br><br>
+          <i>Si no desea registrarse, puede ignorar este paso. <!--br> saltar este paso.--></i>
+          <!--TODO. usar link en vez de botón-->
+          <!--span class="button-centrado" ng-click="goNext()" ng-show="paso == 5" 
+  title="Saltar este paso">Saltar este Paso</span-->
+
+      <br><br>
+          <i>Si ya tiene usuario, <a href="#!/login" title="Acceder a la plataforma">puedes acceder aquí</a></i>
+
+          <!--TODO. usar link en vez de botón
+          <button class="button-centrado" href="#!/login" ng-show="paso == 5" title="Acceder a la plataforma">Acceder</button>
+          -->
+
+        </span>
+
+<!--
+Para el paso donde va a indicar los datos de envio:
+Por favor, revise todos los detalles.
+
+<span>
+  <br><br>
+        Este valor es para pruebas:
+  <input value="1234567890" size="10" style="width: 100px" disabled>
+</span>
+-->
+
+

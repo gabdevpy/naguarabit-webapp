@@ -1,0 +1,33 @@
+Como instalar modulos/paquetes/librerias de node.js
+-------------------------------------------------------
+
+0. Para ejecutar el comando del paso 1, debe estar instalado la herramienta node.js:
+https://nodejs.org/en/download/
+
+Algunas librerias usadas:
+npm install angular-route
+npm install angular-file-upload
+npm install moment --save 
+
+1. ejecutar comando npm install en la carpeta raiz del proyecto, ejemplo: para localhost/naguarabit, la carpeta es wamp64/www/naguarbit.
+
+Sintaxis ejemplo:
+npm install MODULO-PAQUETE
+
+
+2. La libreria se instala en la carpeta node_modules por encima de la carpeta raiz de la aplicacion.
+
+3. puedes buscar la carpeta instalada  en node_modules, copiarla a carpeta backend/lib.
+
+
+4. Entonces se puede referenciar desde el index.html, llamando con una etiqueta parecida a la siguiente:
+
+<script src="lib/angular-file-upload/dist/angular-file-upload.js"></script>
+
+
+*COMO ACTUALIZAR LAS DEPENDIENCIAS*
+npm update
+
+*como corregir fallos en dependencias*
+npm audit
+npm audit fix

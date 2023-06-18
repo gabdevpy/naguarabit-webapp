@@ -1,0 +1,70 @@
+<!--Calculadora/Resumen-->
+<p>
+</p>
+<br/>
+<!--TODO. colocar bandera --flecha-> bandera-destino-->
+<!--span>De: </span><span style="font-weight: bold">{{data.nombre_pais1}}</span>
+<br/>
+<span>A:  </span><span style="font-weight: bold">{{data.nombre_pais2}}</span>
+<br/><br/-->
+<span>Monto: &nbsp;</span>
+<span class="monto">{{(data.monto1 | number : 0.0) + ' ' + data.simbolo_moneda1 }}</span><span> ({{data.nombre_plural_moneda1}})</span>
+<br/>
+<!--span>Monto a recibir: &nbsp;</span>
+<span class="monto">{{(data.monto2 | number : 0.0) + ' ' + data.simbolo_moneda2}}</span><span> ({{data.nombre_plural_moneda2}})</span>
+<br>
+<br-->
+
+<hr>
+
+<!--h4>Pago en Origen</h4-->
+
+<div ng-show="origen.formapago == 'DEP'">
+	<h5>Depósito Bancario</h5>
+<span>Banco: {{origen.nombrebank}}</span><br>
+<span>Cuenta Nro: {{origen.nrocta}}</span><br>
+<span>Nombre Titular: {{origen.nombretitular}}</span><br>
+<span>Documento: {{origen.doctitular}}</span><br>
+</div>
+
+<!--TODO. mostrar formas de pago con giro, para otros paises diferentes a Vzla-->
+<div ng-show="origen.formapago == 'GTIGO'">Giro Tigo <br></div>
+
+<!--hr>
+<h4>Realizar Pago</h4>
+<span>Email: {{destino.email}}</span><br>
+<span>Tipo de cuenta: {{destino.tipocta}}</span><br>
+<span>Observaciones: <br></span>
+<span ng-if="destino.observ != '' ">
+{{ destino.observ}}</span><br>
+<br-->
+
+<br>
+<!--a href="#" ng-if="pago == 0" ng-click="pago = 1">Realizar pago</a-->
+
+<button class="button-centrado" ng-click="pago = 1" ng-show="pago == 0">Confirmar Pago</button>
+
+
+<div ng-if="pago != 0">
+	<div ng-include="'calc/pago.html'"></div>    
+</div>
+
+<!--TODO. agregar boton cancelar transaccion-->
+
+<!--TODO.
+Confirma todos los datos relacionados a la transaccion.<br>
+opcional. agregar boton imprimir para generar resumen en texto, o pdf<br>
+
+Al confirmar, el sistema le notificara por correos a los involucrados en el proceso:
+*cliente
+*operador en pais origen<br>
+*operador en pais destino<br>
+</p>
+-->
+
+<!--TODO. mostrar saludo acorde-->
+
+<div id="debug" ng-show="false">
+	$scope.pago : {{pago}}
+
+</div>

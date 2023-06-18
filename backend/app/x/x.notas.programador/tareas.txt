@@ -1,0 +1,117 @@
+**********************************
+NECESARIO:
+**********************************
+/.colocar configuracion conexion de bd en archivo(s) aparte. solo cambiar el acceso a bd en una linea de todo el codigo.
+
+*transaciones: definir referencia de transaccion: CONCAT(codpais1,codigopais2,'-',idTransaccion) 
+
+%.*colocar links relacionados, entre listas de monedas, ciudades, paises 
+/.*cambiar link de Agregar, por boton. en los CRUDs
+/*user. poblar lista paises y ciudades con select
+*en cada label de campo obligatorio, indicar con * (o con estilo de color de letra)
+*estandarizar crud actuales: pais, user
+*validar campos obligatorios
+*validar contenido de todos los campos
+*desactivar campos clave, en modo edicion, una vez creado el regisro
+ej: user. login
+ej: pais.codigo
+*CRUD de ciudades
+*CRUD de monedas, sencillo
+*vista calculadora, los valores no se cargan manualmente, sino con APIS
+*vista de cotizaciones, los valores no se cargan manualmente, sino con APIS
+*No se pueden eliminar paises, ciudades, monedas usadas en los otros datos. establecer ref foraneas, y validaciones
+*manejar valores de campos, limpiar caracteres especiales
+*lista transacciones: agregar un filtro de periodo de fechas, ejemplo: la ultima semana, el ultimo mes, los ultimos N dias, hoy
+*en las listas de CRUDs, numeras las filas para tener otro identificador aparte del codigo/id respectivo
+*en las listas de CRUDs, mostrar todas de filas
+*en las listas de CRUDs, colocar paginacion de resultados, sobre todo en la lista de transacciones, y en los usuarios
+/*menu principal, colocar opcion CRUD, para todos los listados basicos. llamarlo Configuración
+*opcion de tasas por pais, equivalencia a USD, Bs y BTC
+
+**********************************
+PROBLEMAS
+**********************************
+/.*arreglar error de acentos en valores tipo texto:
+$conn->set_charset("utf8-unicode-ci"); //handle utf-8 encoding
+or
+$conn->set_charset("utf8"); //handle utf-8 encoding
+
+%.*arreglar guardar/obtener datos con saltos de linea, para campos tipo textarea: pais/user.observaciones
+
+
+
+
+
+
+
+
+**********************************
+MEJORAS DE CODIGO, POR SEGURIDAD:
+**********************************
+usar Prepared Statements para todos los querys, quitar uso de valor que viene de parametros POST o GET
+https://php.net/manual/en/mysqli.quickstart.prepared-statements.php
+
+
+
+
+
+**********************************
+MEJORAS DE CODIGO:
+**********************************
+/.colocar configuracion conexion de bd en archivo(s) aparte
+*generalizar metodo para agregar registros en una tabla, pasando nombre de tabla
+*generalizar metodo para borrar registros, pasando solo nombre de tabla, nombre de campo indice, valor de indice
+*que los phps que manipulan los datos devuelvan mensajes de exito o error coherentes
+*mostrar mensajes de error y exito coherentes en la vista
+*activar opcion de debug mediante alguna forma, que involucre tocar el codigo.
+opc1. parametro en url &debug=1
+opc2. configuracion por parte del user admin
+*en archivo .js, funciones delete, no pasar el objeto data. no hace falta, solo pasar el valor de codigo o id
+
+*estandarizar codigo de template y controller:
+variable que almacena los datos se puede llamar simplemente: data
+
+*list_short.php de pais y user, fusionar estos archivos con list.php
+
+*en recorridos de rs de datos, se puede hacer otro ciclo recorriendo un arreglo que tenga los nombres de los campos. codigo mas rapido
+
+*unir carpetas: paises y pais. o colcar una dentro de otra
+*unir carpetas: usuarios y user. o colcar una dentro de otra
+
+*para el retorno de los querys en php, hacerlos genericos, indicandole nombre de tabla y campos.
+y llamando a una funcion generica que devuelva los campos
+
+
+
+
+
+**********************************
+MEJORAS VISUALES:
+**********************************
+*en listas de users. si no hay resultados, mostrar mensaje sobre eso
+*en listas de transacciones. colocar filtros sobre cada columna correspondiente, desde pais origen en adelante
+*en listas. agregar paginacion
+*en listas. ordenamiento por columnas
+
+
+
+
+
+**********************************
+MEJORAS USABILIDAD:
+**********************************
+*en lista de usuarios, decidir que campos ver: pais, ciudad, email, etc...
+con una ventana modal donde se definan
+*modulos de configuracion de la app, para no cambiar la programacion para diferentes usuarios o roles.
+ejemplo: campos en las listas, que filtros mostrar/ocultar. o que haya ventanas de configuracion en modulos que asi lo requieran.
+*calculadora, al enfocar un input resaltar el monto, para que sea mas facil borrar todo.
+
+**********************************
+DOCUMENTAR
+**********************************
+*codigo fuente, cada archivo
+*procesos (Dina). con diagramas
+
+REALIZADO
+**********************************
+/*colocar titulo de las listas, antes de la busqueda

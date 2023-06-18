@@ -1,0 +1,84 @@
+<!--login, con imagen de fondo: montañas-->
+<div>
+  <div class="d-flex justify-content-center h-100">
+    <div>
+      <!--botones Iniciar Sesión con Facebook y Google-->
+      <div class="card-body">
+        <fb:login-button
+      scope="public_profile,email"
+      onlogin="checkLoginState();">
+        </fb:login-button>
+
+      </div>
+        <div style="display-block: inline" class="g-signin2" data-onsuccess="onSignIn" title="Iniciar Sesión con tu cuenta Google Gmail"></div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <h3>Acceso</h3>
+        <!--div class="d-flex justify-content-end social_icon">
+          <span title="Acceso con Facebook"><fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button></span>
+          <span title="Acceso con Google"><div style="display-block: inline" class="g-signin2" data-onsuccess="onSignIn" title="Iniciar Sesión con tu cuenta Google Gmail"></div></span>
+        </div-->
+        <!--div class="d-flex justify-content-end social_icon">
+          <span title="Acceso con Google"><i class="fab fa-google-plus-square"></i></span>
+          <span title="Acceso con Facebook"><i class="fab fa-facebook-square"></i></span>
+          <span><i class="fab fa-twitter-square"></i></span>
+        </div-->
+      </div>
+      <div class="card-body">
+        <form>
+          <div class="input-group form-group">
+            <div class="input-group-prepend" title="Escriba su nombre de usuario o email">
+              <span class="input-group-text"><i class="fas fa-user"></i></span>
+            </div>
+            <input type="text" class="form-control" placeholder="usuario" maxlength="30" ng-model="data.login">
+            
+          </div>
+          <div class="input-group form-group" title="Escriba su contraseña">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-key"></i></span>
+            </div>
+            <input type="password" class="form-control" placeholder="contraseña" maxlength="30" ng-model="data.password">
+          </div>
+          <div class="row align-items-center remember">
+            <input type="checkbox" name="recordar" ng-model="data.recordar">
+            <!--ng-click="$scope.recordar="-->
+            <span onclick="data.recordar=true ">Recordar mis datos</span>
+          </div>
+          <div class="form-group">
+            <input type="submit" value="Acceder" class="btn float-right login_btn">
+          </div>
+        </form>
+      </div>
+
+        <!--botones Iniciar Sesión con Facebook y Google-->
+      <!--div class="card-body">
+        <fb:login-button
+      scope="public_profile,email"
+      onlogin="checkLoginState();">
+        </fb:login-button>
+  
+        <div style="display-block: inline" class="g-signin2" data-onsuccess="onSignIn" title="Iniciar Sesión con tu cuenta Google Gmail"></div>
+        <div></div>
+      </div-->
+
+      <!--div class="card-footer">
+        <div class="d-flex justify-content-center links">
+          <a href="#">Regístrate</a>
+        </div>
+        <div class="d-flex justify-content-center">
+          <a href="#">Olvidé mi contraseña?</a>
+        </div>
+      </div-->
+    </div>
+  </div>
+
+<div id="debug" ng-show="false">
+  <pre>recordar: {{ data.recordar}}</pre>
+  <pre>data: {{ data}}</pre>
+  <pre>model: {{ model}}</pre>
+</div>
+
+</div>
+
+<!--¿No tienes una cuenta?-->

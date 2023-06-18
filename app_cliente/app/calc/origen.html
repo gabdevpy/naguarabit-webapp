@@ -1,0 +1,216 @@
+<div>
+  <!-- form deposito en origen-->
+
+  <div name="divForm"> 
+    <form><!-- novalidate -->
+    <!--
+    <h3>Datos de usuario</h3>
+  -->
+
+  <!--span style="font-weight: bold">País: </span><label name="destino.nombrepais1">{{data.nombre_pais1}}</label-->
+
+  <!-- TODO. ng-change="cargarCamposPorTipoPago()" -->
+  <!--br/>Elija la Forma de Pago<br/-->
+  <select name="origen.formapago" ng-model="origen.formapago" ng-change="setResumenOrigen()"
+  auto-focus
+  class="form-control input-sm">
+  <option value="">- Seleccione la forma de pago -</option>
+  <option ng-repeat="a in lista_pagos_origen" value="{{a.codigo}}">{{a.nombre}}</option>
+  <!--data estatica/fija
+  <option value="DEP">Depósito Bancario</option>
+  <option value="GTIGO">Giro TIGO</option>
+  <option value="GCLARO">Giro Claro</option>
+  <option value="GPERS">Giro Personal</option>
+  <option value="CASH">Efectivo</option>
+-->
+</select>
+
+
+<!--tipo de forma de pago activa en la bd, pero no hay data para mostrar-->
+<div name="divNoData" ng-if="origen.formapago != ''" ng-show="showData == false">
+  <br/>
+  <div class="alert alert-warning" role="alert">
+  Lo sentimos, esta opción no está activa actualmente. <br>
+  Por favor elije otra forma de pago.
+</div>
+</div>
+
+<!--DEPOSITO BANCARIO-->
+<div name="divDepositoBank" ng-show="origen.formapago.charAt(0) == 'B'  && showData == true">
+  <!--&& modo=='CALC'-->
+  <!--todo. LLENAR data de bancos acorde al pais de origen, segun el operadora de ese pais-->
+  <!--br/><span>Banco</span><br/>
+  <input name="nombrebank" type="text" ng-model="origen.nombrebank" maxlength="35" placeholder="Nombre de Banco" 
+  ng-disabled="modo=='CALC'">
+  <br/-->
+
+  <!--AHORA. TODO. LLENAR LISTA DE CUENTA REGISTRADAS SEGUN EL PAIS ORIGEN-->
+  <!--Nro de cuenta en forma simple, sin el tipo
+  <span>Cuenta N°</span><br/>
+  <input name="nrocuenta" type="text" ng-model="origen.nrocuenta" maxlength="20" placeholder="Nro de Cuenta"
+  ng-disabled="modo=='CALC'" required>
+  <br/-->
+
+  <span>{{origen.tipocuenta_desc}} N°</span><br/>
+  <input name="nrocuenta" type="text" ng-model="origen.nrocuenta" maxlength="20" placeholder="Nro de Cuenta"
+  ng-disabled="modo=='CALC'" required>
+  <br/>
+  
+  <!--br/>
+  <span>Tipo:</span><br/>
+  <input name="tipocuenta_desc" type="text" ng-model="origen.tipocuenta_desc" maxlength="20" placeholder="Tipo de Cuenta"
+  ng-disabled="modo=='CALC'" required>
+  <br/-->
+
+  <br/><span>Titular</span><br/>
+  <input name="nombretitular" type="text" ng-model="origen.nombretitular" placeholder="Nombre de Titular"
+  ng-disabled="modo=='CALC'"
+  size="50" maxlength="50" required>
+  <br/>
+
+  <br/><span>Documento Titular </span><br/>
+  <!--(Cédula o Pasaporte)-->
+  <input name="doctitular" type="text" ng-model="origen.doctitular" maxlength="50" placeholder="Documento de Titular"
+  ng-disabled="modo=='CALC'" maxlength="10" required>
+  <br/>
+
+  <!--TODO. agregar boton para copiar info en el portapapeles, parecido al copiar direccion cartera de localbitcoins.
+    O agregar funcion de que al hacer click en el div, se seleccione toda la data-->
+    <br/>
+    <span style="font-weight: bold">Resumen</span>
+    <br/>
+<pre>{{origenResumen}}</pre>
+</div>
+
+
+
+
+<!--FormaPago: GIRO-->
+<div name="divGiros" ng-show="modo=='CALC' && origen.formapago.charAt(0) == 'G' && showData == true">
+  <!--TODO. programar funcion en change para establecer nombre de tipo de giro en el resumen-->
+
+<!--todo. LLENAR LISTA DE datos registrados en Modos de pago origen-->
+<br/><span>Nro de Teléfono</span><br/>
+<input name="nrotlf" type="text" ng-model="origen.nrotlf" maxlength="20" placeholder="Nro de Teléfono" ng-value="0991257146"
+ng-disabled="modo=='CALC'">
+<br/>
+
+<br/><span>Nombre Titular</span><br/>
+<input name="nombretitular" type="text" ng-model="origen.nombretitular" placeholder="Nombre de Titular" ng-value="JoseidyAguilar" size="50" maxlength="50"
+ng-disabled="modo=='CALC'"
+>
+<br/>
+
+<br/><span>Cédula</span><br/>
+<input name="doctitular" type="text" ng-model="origen.doctitular" maxlength="50" placeholder="Cédula de Titular" ng-value="19180462"
+ng-disabled="modo=='CALC'">
+<br/>
+
+
+  <!--TODO. agregar boton para copiar info en el portapapeles, parecido al copiar direccion cartera de localbitcoins.
+    O agregar funcion de que al hacer click en el div, se seleccione toda la data-->
+    <br/>
+    <span style="font-weight: bold">Resumen</span>
+    <br/>
+<pre>{{origenResumen}}</pre>
+
+</div>
+
+
+<!--FormaPago: Western Union-->
+<div name="divGiros" ng-show="modo=='CALC' && origen.formapago=='WU'">
+  <!--TODO. programar funcion en change para establecer nombre de tipo de giro en el resumen-->
+
+<span>Nombre</span><br/>
+<input name="nombretitular" type="text" ng-model="origen.nombretitular" placeholder="Nombre de Titular" size="50" maxlength="50"
+ng-disabled="modo=='CALC'"
+>
+<br/>
+
+<br/><span>Documento</span><br/>
+<input name="doctitular" type="text" ng-model="origen.doctitular" maxlength="50" placeholder="Cédula de Titular"
+ng-disabled="modo=='CALC'">
+<br/>
+
+
+  <!--TODO. agregar boton para copiar info en el portapapeles, parecido al copiar direccion cartera de localbitcoins.
+    O agregar funcion de que al hacer click en el div, se seleccione toda la data-->
+    <br/>
+    <span style="font-weight: bold">Resumen</span>
+    <br/>
+<pre>{{origenResumen}}</pre>
+
+
+</div>
+
+
+
+  <!-- observaciones de forma de pago antes de pagar 
+  <textarea name="observ" ng-model="origen.observ" cols="50" rows="3" placeholder="Notas/Observaciones"
+  ng-show="modo=='CALC' && origen.formapago!='' ">
+    {{}}
+  </textarea>
+  -->
+
+  <!--observaciones de forma de pago al momento de pagar-->
+  <textarea name="observ_pago" ng-model="origen.observ_pago" cols="50" rows="3" placeholder="Notas/Observaciones" ng-show="modo=='PAGO' && origen.formapago!='' ">
+  </textarea>
+
+
+<div name="divComprobantePago" ng-show="modo=='PAGO'">
+  <br/>
+  <input name="comprobantePago" type="text" ng-model="origen.comprobantePago" maxlength="50" placeholder="Numero de comprobante">
+  <br/>
+</div>
+<br/>
+
+</form>
+
+  <div id="debug" ng-show="false">
+    <p> formapago: {{ origen.formapago}}</p>
+    <p> $scope.origen: {{ origen}}</p>
+    <p> origenResumen: {{ origenResumen}}</p>
+  </div>
+
+</div>
+
+</div>
+
+<div name="divMsjNoRegistro" ng-if="showErrorNotFound" ng-show="showErrorNotFound" class="error-element animate-show-hide">
+  <p>{{msg}}</p>
+</div>
+
+<div name="divMensajeExito" ng-if="mostrarExito" ng-show="mostrarExito" class="exito-element animate-show-hide">
+  <p>{{msg}}</p>
+</div>
+
+<div name="divMensajeError" ng-if="showError" ng-show="showError" class="error-element animate-show-hide">
+  <p>Message Operation: {{msg}}</p>
+
+  <!--debug. TODO. solo mostrar estos datos si el nivel de depuracion de la app es DEBUG-ALL. colocarlo dentro de otro div-->
+  <p>StatusCode: {{statusval}}</p>
+  <p>Status: {{statustext}}</p>
+  <p>Response Headers: {{headers}}</p>
+</div>
+
+
+
+  <!--pruebas
+    <p>resumen: {{ $scope.resumen}}</p>
+    <input name="login" type="text" ng-model="user.login" auto-focus>
+    <p>saludo: {{ saludo}}</p>
+<p>login: {{ paramLogin}}</p>
+<p>showError: {{ showError}}</p>
+<p>showForm: {{ showForm}}</p>
+  $scope.showErrorNotFound = false;
+-->
+
+  <!--
+  <textarea name="resumenFormaPago" ng-model="origenResumenPago"  cols="50" rows="3" placeholder="Resumen Forma de Pago">
+  </textarea>
+-->
+
+    <!--
+    <br/>
+    <span style="font-weight: bold">Puedes realizar tu pago en la siguiente cuenta: </span>
+  -->

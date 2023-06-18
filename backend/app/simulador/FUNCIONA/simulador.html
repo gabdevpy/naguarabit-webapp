@@ -1,0 +1,191 @@
+<!-- template de simulador/api.html -->
+
+<!-- usando bootstrap -->
+<!-- This line is just linking the bootstrap thingie in the file. The real thing starts below -->
+
+<div class="container">
+	<div class="row">
+		<div class="col">
+			<!--columna 1 of 2-->
+			<!--columna 1, izquierda-->
+			<div class="form-group">
+
+				<div name="divMensajeCarga" ng-show="!dataOk" class="exito-element animate-show-hide">
+					<p>Cargando información...</p>
+				</div>
+
+				<div name="formAPI1" ng-show="dataOk">
+					<h3 style="color:rgb(29, 161, 242); font-weight:400">Tasas de Referencia</h3><!--br>BTC/USD/Bs/Gs.-->
+					<form>
+						
+						<!--tasa promedio yadio: USD-Bs-->
+						<span style="color: red">$USD/Bs - </span><span style="font-weight: bold">{{ USD_VES_rate | number:0.2}}</span><span> Bs por dólar</span>
+
+
+						<br/><br/>
+						<!--tasa promedio yadio: BTC-USD-->
+						<span style="color: green">BTC/$ - </span><span style="font-weight: bold">{{ BTC_USD_price | number:0.2}}</span><span> Dólares por bitcon</span>
+
+
+						<!-- tasa promedio yadio: BTC-Bs -->
+						<br/><br>
+						<span style="color: blue">BTC/Bs promedio - </span><span style="font-weight: bold; align-text:right">{{BTC_VES_avg | number:2.2}}</span><!--span> Bs/bitcoin</span-->
+
+						<br/><br>
+						<!--tasa yadio promedio COMPRA BTC-Bs-->
+						<span style="color: blue">BTC/Bs Tasa compra - </span><span style="font-weight: bold; align-text:right">{{BTC_VES_buy | number:0.0}}</span><!--span> Bs/BTC</span-->
+
+						<br/><br>
+						<!--tasa yadio promedio VENTA BTC-Bs-->
+						<span style="color: blue">BTC/Bs Tasa Venta - </span><span style="font-weight: bold; align-text:right">{{BTC_VES_sell | number:0.0}}</span><!--span> Bs/BTC</span-->
+
+
+						<br><br>
+						<a href="https://api.yadio.io/json/" target="_BLANK">Confirmar Info (BTC/USD/Bs)</a>
+						<br><br>
+
+						<hr>
+						<br>
+						<!--Guarani (Paraguay)-->
+						<span style="color: red">$USD/PYG - </span><span style="font-weight: bold">{{ USD_PYG | number:2.2}}</span>
+						<span>Guaraníes por dólar</span>
+
+						<br/><br/>
+						<span style="color: red">$PYG/VES - </span><span style="font-weight: bold">{{ PYG_VES | number:2.1}}</span>
+						<span>Bs por Guaraní</span>
+
+						<br/><br/>
+						<a href="https://api.yadio.io/rate/PYG" target="_BLANK">Confirmar Info (Paraguay)</a>
+						<br><br>
+
+						<!--Sol Peruano (Perú)-->
+						<!--hr>
+						<br/>
+						<span style="color: red">$USD/PEN - </span><span style="font-weight: bold">{{ USD_PEN | number:2.2}}</span>
+						<span>(Soles Peruanos por dólar)</span>
+
+						<br/><br/>
+						<span style="color: red">$PEN/VES - </span><span style="font-weight: bold">{{ PEN_VES | number:0.0}}</span>
+						<span>(Bs por sol Peruano)</span>
+
+						<br/><br/>
+						<a href="https://api.yadio.io/rate/PEN" target="_BLANK">Confirmar Info (Perú)</a>
+					-->
+				</form>
+				<br/>
+
+			</div>
+
+		</div>
+
+	</div>
+
+
+	<div class="col" ng-show="dataOk">
+		<!--columna 2 of 2-->
+		<div class="col-sm-12">
+			<h3 style="color:rgb(29, 161, 242); font-weight:400">Simulador</h3>
+			<!--h5>(con Tasas Reales)</h5-->
+
+			<form >
+				<b>Montos sin comisión:</b>
+				<br><br>
+				Gs (Guaraníes)
+				<input name="monto1" type="number" min="6000"
+				ng-model="monto1"
+				ng-change="calcularMontoUSD(); calcularMontoDestino_B(); "
+				auto-focus
+				required
+				class="form-control input-sm"
+				style="width: 150px"
+				ng-pattern="/^[0-9]+?$/">
+					<!--todo. establecer min y max, con valores de api
+						establecer paso del monto: step="50"
+					-->
+					<br>
+					$USD (dólar)
+					<input type="number" name="montoUSD" ng-model="montoUSD"
+					step="0.01" min="1" max="1000000"
+					ng-change="calcularMontoOrigen_1();calcularMontoDestino_A();"
+					ng-blur="calcularMontoOrigen_1();calcularMontoDestino_A();"
+					class="form-control input-sm"
+					style="width: 150px"
+					>
+					<!--TODO.
+					<input type="number" name="montoUSD" ng-model="montoUSD"
+					step="0.1"
+						ng-min="1" ng-max="200" min="1" max="200"
+					-->
+					<br>
+					<span>Bs</span>
+					<input type="text" name="monto2" ng-model="monto2"
+					step="1" readonly
+					class="form-control input-sm"
+					style="width: 150px"
+					title="No habilitado aun para editar. Se hará en la calculadora como tal">
+					<!--TODO. set min and max
+										ng-change="calcularMonto1_A();calcularMontoDestino_B();"
+					ng-blur="calcularMonto1_A();calcularMontoDestino_B();"
+				-->
+
+				<br>
+				Comisión %
+				<input type="number" name="porc_comision" ng-model="porc_comision" ng-change="aplicarComision()"
+				min="0.01" max="15" step="0.01" required
+				class="form-control input-sm"
+				style="width: 150px">
+
+				<br>
+				<b>Montos con Comisión</b>
+				<br><span>Gs  <b>{{monto1_final   | number:0.0}}</b></span>
+				<br><span>USD <b>{{montoUSD_final | number:1.2}}</b></span>
+				<br><span>Bs  <b>{{montoBs_final  | number:0.0}}</b></span>
+
+				<br>
+				<b>
+					<br>Tasa Bs. por dólar: <span>{{ tasa_USD_Bs_final | number:0.2 }}</span>				
+					<br>Tasa Bs. por Gs   : <span>{{ tasa_Gs_Bs_final  | number:1.1 }}</span>
+				</b>
+				<!--b>
+					<br>Tasa Bs. por dólar: <span>{{montoBs_final / montoUSD_final | number:0.0}}</span>				
+					<br>Tasa Bs. por Gs   : <span>{{montoBs_final / monto1_final | number:1.1}}</span>
+				</b-->
+
+				<br><br>
+				<b>Comisión 
+				{{porc_comision | number:0.2}}%</b> <!--br>% de comisión:--> 
+				<!--TODO. pasar formulas al controlador-->
+				<br><span>Gs {{monto1 * porc_comision/100  | number:0.0}}</span>
+				= <span>USD {{montoUSD * porc_comision/100 | number:1.2}}</span>
+				<!--br><span><b>Bs {{monto2 - montoBs  | number:0.0}}</b></span-->
+
+				</form>
+				<br>
+
+			</form>
+			<br><br>
+		</div>
+	</div>
+
+	<div class="row">
+
+<span>
+Última modificación: 2020-06-25, hora: 07:59
+</span>
+	</div>	
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+			<!--div class="col-sm-12">
+					<h5 style="color:rgb(29, 161, 242)">Herramientas</h5>
+					<ul>
+						<li><a href="https://yadio.io/calc.html" target="_BLANK">Calculadora Yadio</a></li>
+						<li><a href="https://yadio.io/today.html" target="_BLANK">Gráfica Hoy</a></li>
+						<li><a href="https://yadio.io/charts.html" target="_BLANK">Gráfica Hist. Bs/BTC/$USD</a></li>
+			</ul>
+		</div-->

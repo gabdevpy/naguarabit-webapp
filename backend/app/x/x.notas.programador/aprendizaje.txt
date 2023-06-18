@@ -1,0 +1,19 @@
+ANGULAR:
+redireccion entre vistas
+controlador
+template
+pasar parametros a llamadas get y post
+obtener parametros de URL
+
+
+BUSCAR:
+API precio dolar 
+
+CAPACITARME SOBRE:
+API localbitcoins
+API localethereum
+API blockchain
+VER PANTALLAS de bitRem
+
+LEER SOBRE:
+Lighting Networking

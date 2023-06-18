@@ -1,0 +1,64 @@
+{
+  "_from": "angular-route@1.8.2",
+  "_id": "angular-route@1.8.2",
+  "_inBundle": false,
+  "_integrity": "sha512-49LJYxuaQ/ZDiu9dD2xo1LkazqObkGjw0a7dUF7UKCT8EELgBsMd6QrI6aEVGtI62ppkiFkxqmiV8fcwYdXpug==",
+  "_location": "/angular-route",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "angular-route@1.8.2",
+    "name": "angular-route",
+    "escapedName": "angular-route",
+    "rawSpec": "1.8.2",
+    "saveSpec": null,
+    "fetchSpec": "1.8.2"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/angular-route/-/angular-route-1.8.2.tgz",
+  "_shasum": "d482bf05a8c9e448300acd8f9989c635d31b5077",
+  "_spec": "angular-route@1.8.2",
+  "_where": "C:\\wamp64\\www\\naguarabit",
+  "author": {
+    "name": "Angular Core Team",
+    "email": "angular-core+npm@google.com"
+  },
+  "bugs": {
+    "url": "https://github.com/angular/angular.js/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "AngularJS router module",
+  "homepage": "http://angularjs.org",
+  "jspm": {
+    "shim": {
+      "angular-route": {
+        "deps": [
+          "angular"
+        ]
+      }
+    }
+  },
+  "keywords": [
+    "angular",
+    "framework",
+    "browser",
+    "router",
+    "client-side"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "name": "angular-route",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/angular/angular.js.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.8.2"
+}

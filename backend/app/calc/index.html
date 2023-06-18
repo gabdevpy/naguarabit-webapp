@@ -1,0 +1,380 @@
+<!--pagina principal de la calculadora dentro del backend-->
+
+<!--usando bootstrap-->
+
+<div class="container">
+
+  <div class="row col-sm-12">
+
+    <!--columna 1, izquierda. para instrucciones-->
+
+    <div class="col-sm-3" style="align-content: left">
+
+      <!--h3>Calculadora</h3-->
+
+      <div class="instrucciones">
+
+        <div ng-include="'calc/instrucciones.html'"></div>
+
+        <br>
+
+  <!--TODO. ajustar valor paso cuando sea paso 3 y 4-->
+
+        <p><progress id="progreso_pasos" max="4" value="1" ng-model="paso" title="Progreso: Paso {{paso}} de 4"></progress>
+
+          <br>
+
+          Paso {{paso}} de 3
+
+          <br>
+
+  <!--TODO. OJO. analizar bien cuando mostrar, ocultar este botón
+
+  deshabilitar cuando se haya adjuntado comprobante en el paso 3
+
+-->
+
+<button class="button-centrado" ng-click="goBack()" ng-show="paso >= 2">Atrás</button>
+
+</p>
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<!--Columna 2, centro-->
+
+<div class="col-sm-5">
+
+  <!--PASO 1 - calculo de la remesa-->
+
+  <div ng-show="paso==1">
+
+    <div ng-include="'calc/calculo.html'"></div>    
+
+  </div>
+
+
+
+  <!--TODO. IDEA. mejora rendimiento -> inyectar cada div desde el controlador a medida que cambia el valor de paso-->
+
+
+
+
+
+  <!--PASO 2 - pago en origen, proporcionar los datos para que el usuario pague en el pais origen-->
+
+  <div class="form-group" ng-show="paso==2" ng-class="{'has-error': myForm.myDecimal.$invalid}">
+
+    <form name="form4"><!-- novalidate -->
+
+      <h3>Pago en</h3>
+
+      <h4>{{data.nombre_pais1}}</h4>
+
+      <h4></h4>
+
+      <div ng-include="'calc/origen.html'"></div>
+
+    </form>
+
+  </div>
+
+
+
+
+
+  <!--PASO 3 - pago en origen, captura comprobante/s de pago-->
+
+  <div class="form-group" ng-show="paso==3">
+
+    <form name="form5"><!-- novalidate -->
+
+      <h3>Enviar Comprobante (s)
+
+        <br>
+
+        *OJO: SE QUITÓ ESTE PASO DE LA CALCULADORA, PARA QUE EL USUARIO SUBA LOS COMPROBANTES EN EL CHAT*</h3>
+
+      <div ng-include="'calc/resumen.html'"></div>
+
+    </form>
+
+  </div>
+
+
+
+  <!--PASO 4 - pago en destino, cuentas bancarias-->
+
+  <div class="form-group" ng-show="paso==4" ng-class="{'has-error': myForm.myDecimal.$invalid}">
+
+    <form name="form3"><!-- novalidate -->
+
+      <h3>Beneficiario</h3>
+
+      <h4>(en {{data.nombre_pais2}})</h4>
+
+      <div ng-include="'calc/destino.html'"></div>
+
+    </form>
+
+  </div>
+
+
+
+
+
+  <!--PASO 5 - datos de usuario-->
+
+  <div class="form-group" ng-show="paso==5" ng-class="{'has-error': myForm.myDecimal.$invalid}">
+
+    <form name="form2"><!-- novalidate -->
+
+      <h3>Datos de usuario</h3>
+
+      <div ng-include="'calc/user.html'"></div>
+
+    </form>
+
+  </div>
+
+
+
+  <div class="botones-centrados" style="align-content:center">
+
+    <!--TODO. deshabilitar botón si los montos indicados están fuera de rango válido-->
+
+    <button class="button-centrado" ng-click="goNext()" ng-show="paso == 1"
+
+    ng-disabled="form1.$invalid" >Solicitar Remesa</button>
+
+
+
+  <!--
+
+ng-if="tasa_USD_Bs_final && tasa_Gs_Bs_final"
+
+
+
+  TODO. OJO. analizar bien cuando mostrar, ocultar este botón
+
+  deshabilitar cuando se haya adjuntado comprobante en el paso 3
+
+  <button class="button-centrado" ng-click="goBack()" ng-show="paso >= 2">Atrás</button>
+
+-->
+
+
+
+  <!--TODO. OJO. ocultar este botón
+
+  cuando en un paso no se tenga la informacion necesaria:
+
+  agregar validaciones
+
+-->
+
+<button class="button-centrado" ng-click="goNext()" 
+
+ng-if="origen.formapago != ''"
+
+ng-show="paso != 1 && paso != 5"
+
+ng-hide="!showData || showData == false">Continuar</button>
+
+<!--TODO. colocar && paso != 3-->
+
+
+
+<!--button class="button-centrado" ng-show="paso == 5"
+
+title="Registrar solicitud de remesa *en desarrollo*">Confirmar</button-->
+
+<!--ng-click="goNext()" -->
+
+
+
+
+
+<!--button class="button-centrado" title="Confirmar transacción *en desarrollo*" ng-show="paso == 5">Ignorar</button-->
+
+<!--ng-click="goNext()"-->
+
+  <!--button class="button-centrado" ng-click="goNext()" ng-show="paso == 4" 
+
+    title="Saltar este paso">Saltar Paso</button-->
+
+
+
+    <button class="button-centrado" ng-click="confirm()" ng-show="paso == 5" 
+
+    title="Confirmar transacción">Proceder</button>
+
+  </div>
+
+</div>
+
+
+
+
+
+
+
+<!--3era Columna a la derecha // Resumen de la operación-->
+
+<div class="col-sm-3">
+
+ <div class="resumen" ng-show="paso!=1">
+
+  <h5>Calculadora</h5>
+
+  <b>Resumen</b>
+
+  <br/>
+
+  <span id="data.resumen1">Envías: &nbsp;&nbsp;{{(data.monto1 | number : 0.0) + ' ' + data.simbolo_moneda1 }}</span>
+
+  <br/>
+
+  <span id="data.resumen1">Recibes: {{(data.monto2 | number : 0.0) + ' ' + data.simbolo_moneda2}}</span>
+
+  <hr>
+
+  <span>De: {{data.nombre_pais1}}</span>
+
+  <br/>
+
+  <span>A: {{data.nombre_pais2}}</span>
+
+</div>
+
+
+
+<!--TODO. idea.  agregar boton cancelar transaccion-->
+
+  <!--TODO. idea. colocar banderas con flecha: así:
+
+   bandera1 ->>flecha->> bandera2
+
+</div>
+
+ -->
+
+
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+  <div id="debug" ng-show="false">
+
+    <p> paso: {{ paso}}</p>
+
+    <p> id_transaccion: {{ $scope.data.id_transaccion }}</p>
+
+    <p> destino: {{ destino}}</p>
+
+    <p> origen: {{ origen}}</p>
+
+    <p> formapago: {{ origen.formapago}}</p>
+
+    <p> origenResumen: {{ origenResumen}}</p>
+
+    <!--span>
+
+Fecha actualización código: 2020-11-01, Hora: 16:36
+
+</span-->
+
+  </div>
+
+
+
+</div>
+
+
+
+
+
+        <!--GARBAGE
+
+    <p> datosFormaPago: {{ origen.datosFormaPago}}</p>
+
+    <p> $scope.modo: {{ modo}}</p>
+
+    <p> formapago.charAt(0): {{ origen.formapago.charAt(0)}}</p>
+
+    <p> formapago.charAt(0) == 'B': {{ origen.formapago.charAt(0) == 'B'}}</p>
+
+
+
+    <p>Progreso: <progress id="progreso_pasos" max="100" value="20" ng-model="paso"></progress></p>
+
+  -->
+
+
+
+<!--pruebas
+
+<div class="resumen">
+
+<hr>
+
+    {{ saludo}}
+
+    <h4>DATOS DEBUG: </h4>
+
+    <p>paso: {{ paso }}</p>
+
+    <p>modo: {{ modo }}</p>
+
+    <p>data: {{ data }}</p>
+
+    <p>user: {{ user }}</p>
+
+    <p>origen: {{ origen}}</p>
+
+    <p>destino: {{ destino}}</p>
+
+</div>
+
+-->
+
+
+
+<!--
+
+  <p style="align-content: center; text-align: center;">
+
+    <a href="#!/calc/2">Siguiente paso &gt;&gt;&gt;</a>
+
+  </p>
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--button class="button-centrado" ng-click="goNext()" ng-show="paso == 3 && $ctrl.pagos=='ok' ">Continuar</button-->
+

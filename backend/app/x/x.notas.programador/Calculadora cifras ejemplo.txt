@@ -1,0 +1,24 @@
+Calculadora cifras ejemplo
+------------------------------------
+USD: 1
+Gs. 7375.78 = 7,376
+Bs. 3418594.1 = 3,418,594 
+
+
+Yadio
+------------------------------------
+USD_PYG: 6705.255087 + 10% = 7375.78
+USD_VES_rate : 3056463.473151 + 10% = 3418594.12973. ERROR, la tasa no puede aumentar!
+
+Calculos montos. enviando 1$USD
+-------------------------------------------------------------------------
+1.ejemplo con Gs decimales redondeados hacia abajo:
+Gs: 6705.255087 + 10% = 7375.78 = 7,376
+Comision Gs. 6705.255087 x 10% = 670.53 = 671
+Gs. recibidos -menos- comision = 7,376 - 671 = 6705
+-------------------------------------------------------------------------
+
+Bs: 3056463.473151 - 10% = 
+
+
+#PYG_VES: 463.48913, no interesa, no usar

@@ -1,0 +1,17 @@
+<!--filtro verificacion pago origen // pago1_status = !pago1_status; -->
+  <a title="Verificacion por operador"
+   class="btn btn-sm pull-right" style="color: white"
+   ng-class="{true: 'btn-info', false: 'btn-warning'}[pago1_status]"
+   ng-click="pago2_status = !pago2_status;  cargarDataFiltrada();"
+   ng-if="mostrarFiltroPO">
+   Pago Origen {{pago1_status && 'Verificado' || 'No Verificado'}}
+</a>
+
+<!--filtro pago destino: pendiente / realizado-->
+  <a title="Estatus de Pago destino por parte del operador (realizado o pendiente)"
+   class="btn btn-sm pull-right" style="color: white"
+   ng-class="{true: 'btn-success', false: 'btn-danger'}[pago2_status]"
+   ng-click="pago2_status = !pago2_status; cargarDataFiltrada();"
+   ng-if="mostrarFiltroPD">
+   Pago Destino {{pago2_status && 'Realizado' || 'Pendiente'}}
+</a>

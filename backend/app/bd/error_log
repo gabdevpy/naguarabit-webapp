@@ -1,0 +1,14 @@
+[15-Sep-2021 10:48:19 America/New_York] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'naguarab_wp37'@'server128.web-hosting.com' (using password: YES) in /home/naguarab/public_html/backend/app/bd/connection2.php on line 9
+[15-Sep-2021 10:48:19 America/New_York] PHP Warning:  mysqli::set_charset(): Couldn't fetch mysqli in /home/naguarab/public_html/backend/app/bd/connection2.php on line 17
+[15-Sep-2021 10:48:19 America/New_York] PHP Notice:  Undefined variable: conn in /home/naguarab/public_html/backend/app/bd/connection2.php on line 20
+[15-Sep-2021 10:48:19 America/New_York] PHP Notice:  Trying to get property 'connect_error' of non-object in /home/naguarab/public_html/backend/app/bd/connection2.php on line 20
+[15-Sep-2021 10:51:38 America/New_York] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'naguarab_wp37'@'localhost' (using password: YES) in /home/naguarab/public_html/backend/app/bd/connection2.php on line 18
+[15-Sep-2021 10:51:38 America/New_York] PHP Warning:  mysqli::set_charset(): Couldn't fetch mysqli in /home/naguarab/public_html/backend/app/bd/connection2.php on line 34
+[15-Sep-2021 10:51:38 America/New_York] PHP Notice:  Undefined variable: conn in /home/naguarab/public_html/backend/app/bd/connection2.php on line 40
+[15-Sep-2021 10:51:38 America/New_York] PHP Notice:  Trying to get property 'connect_error' of non-object in /home/naguarab/public_html/backend/app/bd/connection2.php on line 40
+[15-Sep-2021 10:51:43 America/New_York] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'naguarab_wp37'@'localhost' (using password: YES) in /home/naguarab/public_html/backend/app/bd/connection2.php on line 18
+[15-Sep-2021 10:51:43 America/New_York] PHP Warning:  mysqli::set_charset(): Couldn't fetch mysqli in /home/naguarab/public_html/backend/app/bd/connection2.php on line 34
+[15-Sep-2021 10:51:43 America/New_York] PHP Notice:  Undefined variable: conn in /home/naguarab/public_html/backend/app/bd/connection2.php on line 40
+[15-Sep-2021 10:51:43 America/New_York] PHP Notice:  Trying to get property 'connect_error' of non-object in /home/naguarab/public_html/backend/app/bd/connection2.php on line 40
+[15-Sep-2021 10:56:02 America/New_York] PHP Notice:  Undefined variable: conn in /home/naguarab/public_html/backend/app/bd/connection2.php on line 40
+[15-Sep-2021 10:56:02 America/New_York] PHP Notice:  Trying to get property 'connect_error' of non-object in /home/naguarab/public_html/backend/app/bd/connection2.php on line 40

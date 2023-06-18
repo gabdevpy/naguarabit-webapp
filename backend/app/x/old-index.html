@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!--<title>BitTrade-Admin</title>-->
+
+  <!--<title>Angular-Learning - Admin-Venebit</title>-->
+
+  <title>Naguarabit - Administrador</title>
+
+<link rel="icon" 
+
+      type="image/png" 
+
+      href="http://naguarabit.com/img/favicon/favicon.png">
+
+        <meta name="description" content="">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="lib/html5-boilerplate/dist/css/normalize.css">
+
+  <link rel="stylesheet" href="lib/html5-boilerplate/dist/css/main.css">
+
+
+
+<!--TODO. descargar e implementar en forma local-->
+
+  <!--bootstrap-->
+
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet"/>
+
+
+
+  
+
+  <!--js-->
+
+  <script src="lib/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+
+
+
+  <!--   Font Awesome version 5.11's new icons -->
+
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.11.1/css/all.css">
+
+<!--TODO. end-->
+
+
+
+  <!--
+
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular-messages.js"></script>
+
+-->
+
+
+
+<!--For Google login-->
+
+<!--meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com"-->
+
+<meta name="google-signin-client_id" content="113195473989-74pogp8mk0e8rchn5f34d8pp12b1dle9.apps.googleusercontent.com">
+
+
+
+  <!--CSS-->
+
+  <link rel="stylesheet" href="css/app.css">
+
+  <link rel="stylesheet" href="css/styles.css">
+
+  <link rel="stylesheet" href="css/style_lists.css">
+
+
+
+  <!--Css del login ejemplo con logos Fb, Google, Twitter-->
+
+  <link rel="stylesheet" href="css/login.css">
+
+
+
+</head>
+
+
+
+
+
+<body>
+
+  <!--Facebook SDK para JavaScript, para habilitar login, intento 2--> 
+
+  <script>
+
+  function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
+
+    console.log('statusChangeCallback');
+
+    console.log(response);                   // The current login status of the person.
+
+    if (response.status === 'connected') {   // Logged into your webpage and Facebook.
+
+      testAPI();  
+
+    } else {                                 // Not logged into your webpage or we are unable to tell.
+
+      document.getElementById('status').innerHTML = 'Please log ' +
+
+        'into this webpage.';
+
+    }
+
+  }
+
+
+
+
+
+/*
+
+  function checkLoginState() {               // Called when a person is finished with the Login Button.
+
+    FB.getLoginStatus(function(response) {   // See the onlogin handler
+
+      statusChangeCallback(response);
+
+    });
+
+  }
+
+
+
+
+
+  window.fbAsyncInit = function() {
+
+    FB.init({
+
+      appId      : '898219257268287',        //{app-id}',
+
+      cookie     : true,                     // Enable cookies to allow the server to access the session.
+
+      xfbml      : true,                     // Parse social plugins on this webpage.
+
+      version    : 'v7.0'                    //{api-version} Use this Graph API version for this call.
+
+    });
+
+
+
+
+
+    FB.getLoginStatus(function(response) {   // Called after the JS SDK has been initialized.
+
+      statusChangeCallback(response);        // Returns the login status.
+
+    });
+
+  };
+
+
+
+  
+
+  (function(d, s, id) {                      // Load the SDK asynchronously
+
+    var js, fjs = d.getElementsByTagName(s)[0];
+
+    if (d.getElementById(id)) return;
+
+    js = d.createElement(s); js.id = id;
+
+    js.src = "https://connect.facebook.net/en_US/sdk.js";
+
+    fjs.parentNode.insertBefore(js, fjs);
+
+  }(document, 'script', 'facebook-jssdk'));
+
+
+
+ 
+
+  function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
+
+    console.log('Welcome!  Fetching your information.... ');
+
+    FB.api('/me', function(response) {
+
+      console.log('Successful login for: ' + response.name);
+
+      document.getElementById('status').innerHTML =
+
+        'Thanks for logging in, ' + response.name + '!';
+
+    });
+
+  }
+
+  */
+
+</script>
+
+
+
+<!--Facebook SDK para JavaScript, para habilitar login, intento 1
+
+<div id="fb-root"></div>
+
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v7.0&appId=898219257268287&autoLogAppEvents=1"></script>
+
+  --> 
+
+
+
+<!--Load the Google Platform Library-->
+
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+
+
+
+  <!--
+
+  <h1>Angular Tests</h1>
+
+-->
+
+
+
+<!--menu principal, con opciones de acceso y usuario
+
+<nav class="c-nav c-nav--bar c-nav--top u-fixed u-fixed--top">
+
+<a href="/" class="c-nav_link c-nav_link--on u-ml4 u-size-l">
+
+<i class="fa fa-check-circle u-red"></i> <span class="u-tb-none">NaguaraBit</span></a>
+
+<button id="mobile-menu" class="c-nav_toggler u-mr3" data-toggle="class" data-class="u-flex" data-target="#navbar-collapse" aria-expanded="false" aria-label="Toggle navigation" aria-controls="navbar-collapse">
+
+<i class="fa fa-bars"></i>
+
+</button>
+
+<div class="u-mla c-nav_collapse" id="navbar-collapse">
+
+<a href="/feedback" class="c-nav_link c-nav_item False u-pr4">
+
+<i class="fa fa-calculator"></i>
+
+Calculadora
+
+</a>
+
+<a href="/stats" class="c-nav_link c-nav_item False u-pr4">
+
+<i class="fa fa-chart-bar"></i>
+
+Transacciones
+
+</a>
+
+<a href="/settings" class="c-nav_link c-nav_item False u-pr4">
+
+<i class="fa fa-cog"></i>
+
+Configuración
+
+</a>
+
+<web-menu>
+
+<div class="c-dropdown c-nav_item">
+
+<a href="#" id="user-menu" class="c-nav_link u-nowrap" data-toggle="class" data-class="u-flex" data-target="#user-menu-data">
+
+<span class="fa fa-user-circle"></span>&nbsp;<span class="__cf_email__" data-cfemail="395e585b4b505c55495c4b5c43174f435558795e54585055175a5654">gabrielperez.vzla@gmail.com</span><i class="fa fa-sort-down u-ml1" style="transform: translateY(-3px)"></i>
+
+</a>
+
+<div class="c-dropdown_menu" id="user-menu-data">
+
+<a href="/logout?clear" class="c-nav_link c-nav_item c-nav_item--sub"><i class="fa fa-sign-out-alt fa-fw"></i> Cerrar sesión</a>
+
+</div>
+
+</div>
+
+</web-menu>
+
+</div>
+
+</nav>
+
+-->
+
+
+
+<!--menu basico-->
+
+<ul class="menu">
+
+  <li><a href="#!/inicio">NaguaraBit</a></li>
+
+  <li><a href="#!/develop">Desarrollo</a></li>
+
+  
+
+  <!--TODO. desactivar para el hosting
+
+  <li><a href="#!/pruebas">Pruebas</a></li>
+
+  <li><a href="#!/tasapais">Tasas*</a></li>
+
+-->
+
+
+
+
+
+  <li><a href="#!/crud">Configuración</a></li>
+
+  <!--Todo. mejora. agrupar estas opciones en un solo menu:
+
+  <li><a href="#!/usuarios">Usuarios</a></li>
+
+  <li><a href="#!/paises">Países</a></li>
+
+  <li><a href="#!/ciudades">Ciudades</a></li>
+
+  <li><a href="#!/monedas">Monedas</a></li>
+
+  <li><a href="#!/bancos">Bancos</a></li>
+
+  -->
+
+  <!--Todo. fin mejora-->
+
+
+
+  <li><a href="#!/pruebas">Pruebas</a></li>
+
+  <li><a href="#!/simulador">Simulador</a></li>
+
+  <li><a href="#!/calc">Calculadora</a></li>
+
+  <li><a href="#!/transacc">Transacciones</a></li>
+
+  <li><a href="#!/login">Acceso</a>
+
+
+
+  <!--botón Iniciar Sesión con Facebook, usando el SDK Javascript
+
+    <fb:login-button
+
+  scope="public_profile,email"
+
+  onlogin="checkLoginState();">
+
+    </fb:login-button>
+
+  -->
+
+  
+
+    <!--botón Continuar con Facebook-->
+
+    <div class="fb-login-button" data-size="medium" data-button-type="login_with" data-layout="rounded" data-auto-logout-link="false" data-use-continue-as="true" data-width=""></div>
+
+    </a>
+
+    <div>
+
+    </div>
+
+
+
+    <!--botón Iniciar Sesión con Google
+
+  <li>
+
+    <div style="display-block: inline" class="g-signin2" data-onsuccess="onSignIn" title="Iniciar Sesión con tu cuenta Google Gmail"></div>
+
+ </li>
+
+    -->
+
+  
+
+</li>
+
+</ul>
+
+
+
+  <!--
+
+  <li><a href="#!/upload">Upload</a></li>
+
+  <li><a href="#!/login">Registro / Acceso</a></li>
+
+  -->
+
+  
+
+  <!--
+
+  <li><a href="#!/inicio">Comisiones</a></li>
+
+  <li><a href="#!/login">Usuario: XYZ</a></li>
+
+  <li><a href="#!/inicio">Estadísticas</a></li>
+
+    <li><a href="#!/user/gperez">Prueba 1 Usuario</a></li>
+
+  -->
+
+
+
+ <!--
+
+    <li><a href="#!/view1">view1</a></li>
+
+    <li><a href="#!/view2">view2</a></li>
+
+    <li><a href="#!/saludo">saludo</a></li>
+
+</ul>
+
+  -->
+
+
+
+
+
+  <!--
+
+  <ul class="menu">
+
+    <li><a href="#!/view1">view1</a></li>
+
+    <li><a href="#!/view2">view2</a></li>
+
+  </ul>
+
+-->
+
+
+
+  <!--[if lt IE 7]>
+
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+
+    <![endif]-->
+
+
+
+
+
+<!--aqui se muestra el cuerpo de la pagina, o sea la vista elegida mediante el menu-->
+
+    <div ng-view></div>
+
+
+
+    <br><br><br>
+
+    <!--TODO. colocar footprint-->
+
+  <!--
+
+  <div>BitTrade developing app: v<span app-version></span></div>
+
+-->
+
+
+
+  <!-- In production use:
+
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+
+-->
+
+<!--angular lib-->
+
+<script src="lib/angular/angular.js"></script>
+
+<script src="lib/angular-route/angular-route.js"></script>
+
+<script src="lib/angular-file-upload/dist/angular-file-upload.js"></script>
+
+
+
+<!--scripts angular -->
+
+<script src="app.js"></script>
+
+<script src="view1/view1.js"></script>
+
+<script src="view2/view2.js"></script>
+
+<script src="pruebas/pruebas.js"></script>
+
+<script src="inicio/saludo.js"></script>
+
+<script src="mail/mail.js"></script>
+
+<script src="usuarios/usuarios.js"></script>
+
+<script src="user/user.js"></script>
+
+<script src="paises/paises.js"></script>
+
+<script src="pais/pais.js"></script>
+
+<script src="monedas/monedas.js"></script>
+
+<script src="monedas/moneda.js"></script>
+
+<script src="ciudad/ciudades.js"></script>
+
+<script src="ciudad/ciudad.js"></script>
+
+<script src="calc/calc.js"></script>
+
+<script src="transacc/transacc.js"></script>
+
+<script src="transacc/resumen.js"></script>
+
+<script src="login/login.js"></script>
+
+<script src="bancos/bancos.js"></script>
+
+<script src="upload/upload.js"></script>
+
+<script src="pruebas/pruebas.js"></script>
+
+<script src="crud/crud.js"></script>
+
+<script src="tasapais/tasapais.js"></script>
+
+<script src="modal/modal.js"></script>
+
+<script src="modal/modal.js"></script>
+
+<script src="simulador/simulador.js"></script>
+
+<!--script src="api/api.js"></script--> <!--antes era api, ahora es simulador-->
+
+<!--
+
+  <script src="pruebas/modal.js"></script>
+
+  <script src="pruebas/modal.js"></script>
+
+
+
+-->
+
+
+
+<!--js propios-->
+
+<script src="js/fechas.js"></script>
+
+<script src="js/codigos.js"></script>
+
+<!--script src="js/fblogin.js"></script-->
+
+
+
+<!--modulos del ejemplo-->
+
+<script src="core/version/version.js"></script>
+
+<script src="core/version/version-directive.js"></script>
+
+<script src="core/version/interpolate-filter.js"></script>
+
+
+
+<!--TODO. descargar y usar en forma local
+
+-->
+
+<script src="https://kit.fontawesome.com/3034400118.js" crossorigin="anonymous"></script>
+
+
+
+</body>
+
+</html>
+

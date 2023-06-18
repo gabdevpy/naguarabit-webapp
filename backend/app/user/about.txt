@@ -1,0 +1,10 @@
+about module
+modulo para ver gestionar datos de un usuario especifico:
+ver
+insertar
+modificar
+eliminar
+
+
+nota:
+el archivo get_user_frontend.php solo va a ejecutar correctamente en el hosting, por permisos para acceder con php en forma remota a la bd de wordpress

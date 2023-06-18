@@ -1,0 +1,142 @@
+<!--Muestra lista de pagos en destino para una transaccion especifica-->
+<div>
+<!--pruebas
+<p>saludo:\
+ {{ saludo}}</p>
+-->
+<!--TODO.DESEO.    //enfocar campo de busqueda
+<p>Buscar:<input type="text" ng-model="busq1"
+  auto-focus="{{ focusInput }}" value="auto-focus on"></p>
+-->
+<h3 style="color: orange">Pagos en destino</h3>
+
+<table width="100%"  class="table table-sm table-hover">
+	<tr>
+    <!--TODO. mostrar moneda segun el pais:
+      Debe ajustarse la hora al pais destino, pues es la hora en que se hizo el pago al cliente,
+      o simplemente se coloca la hora de Vzla, por defecto, por ahora.-->
+      <th x ="max-width:20px" title="">Fecha</th> <!--/Hora-->
+      <th style="width:10%">Monto (Bs.{{x.codmoneda}})</th>
+      <th>Banco</th>
+      <th style="max-width:15%">Nro. de cuenta</th>
+      <th>Pagado</th>
+      <th>Comprobante/s</th>
+      <th title="Verificado por operador">Verif. Operador</th>
+      <th style="width:7%">Operador</th>
+      <th style="width:7%" title="Verificado por el cliente o el beneficiario">Verif. cliente</th>
+      <th style="width:7%">Acciones</th>
+    <!--  <th>Comentarios</th>-->
+    <!--
+    <th>Ciudad</th>
+  -->
+</tr>
+<tr ng-repeat="x in resultados_destino">
+    <!--
+      <td>{{x.id}}</td>-->
+      <td>{{ x.date_created | date:'yyyy-MM-dd - HH:mm'}}</td>
+      <!--TODO. mostrar nombre corto de banco, en vez del codigo. traer datos de bancos en popup-->
+      <td style="text-align:right; padding-right:50px">{{ x.monto | number : 0.0 }}</td>
+  <td title="Mostrar nombre completo del banco">{{ x.cod_banco }}</td>
+  <td >{{ x.nroctabank }}</td>
+
+
+  <!--verif.operador-->
+  <!--verificacion de si se realizo el deposito todo correctamente-->
+  <!--TODO. idea, cambiar presentacion: en vez de ser botones, que sean iconos o solo texto-->
+  <td style="text-align:center; padding-right:35px" ng-if="x.check_realizado == 2">
+    <span class="badge badge-pill badge-primary" title="El operador ya realizó y notificó este pago">SI</span>
+  </td>
+  <td style="text-align:center; padding-right:35px" ng-if="x.check_realizado != 2">
+    <span class="badge badge-pill badge-danger" title="El operador ya realizó y notificó este pago">NO</span>
+  </td>
+
+
+    <!--ver/agregar comprobantes-->
+    <!--TODO. comprobante. programar la para cargar imagen,crear link a la imagen, mostrar nombre de imagen solamente sin ruta-->
+    <td ng-if="x.check_realizado >= 1 && x.img_comprob && x.img_comprob != '' ">
+      <a title="Ver comprobante (Pendiente: programar)" target="_BLANK" href="#!/pagosdestino/comprobante/">{{ x.img_comprob }}</a>
+      <a href="#!/pagosdestino/comprobante/reemplazar/{{x.id_transaccion}}" title="Quitar imagen de comprobante">
+        <span class="badge badge-pill badge-warning">Eliminar</span></a>
+    </td>
+    <td ng-if="!x.img_comprob || x.img_comprob ==''">
+      <a href="#!/pagosdestino/comprobante/adjuntar/{{x.id_transaccion}}" title="Adjuntar imagen de comprobante">
+        <span class="badge badge-pill badge-warning">Agregar</span></a>
+      </td>
+
+ <!--verif.pago-->
+  <!--TODO. idea, cambiar presentacion: en vez de ser botones, que sean iconos o solo texto-->
+  <!--reporte que se realizo el deposito-->
+  <td style="text-align:center; padding-right:35px" ng-if="x.check_realizado >= 1">
+    <span class="badge badge-pill badge-primary" title="El operador ya realizó y notificó este pago">SI</span>
+  </td>
+  <td style="text-align:center; padding-right:35px" ng-if="x.check_realizado == 0">
+    <span class="badge badge-pill badge-danger" title="El operador ya realizó y notificó este pago">NO</span>
+  </td>  
+  
+        <!--operador-->
+        <td><a title="Ver detalles del operador >> nombre al menos" href="#!/user/{{ x.login_user_pagador }}">{{ x.login_user_pagador }}</a></td>
+
+        <!--verif.cliente-->
+      <td>
+        <span ng-if="x.check_user_cliente == 1" class="badge badge-pill badge-success"
+        title="El cliente ya verifico/confirmo que llegó este pago al destinatario">SI</span>
+        <span ng-if="x.check_user_cliente == 0" class="badge badge-pill badge-danger"
+        title="El cliente no ha verificado/confirmado que llegó este pago al destinatario">NO</span>
+      </td>
+
+<!--acciones/ ver mas-->
+      <!--td><a title="Ver mas detalles del pago (pendiente de programar)" href="#!/destino/{{ x.id }}">Elegir acción</a></td-->
+    <td>
+      <!--select name="accion" ng-model="x.accion" class="form-control input-sm" ng-change="ejecutarAccion()">
+        <option value="">-Elegir acción-</option>
+        <option value="P">Pagar</option>
+        <option value="V">Verificar Pago</option>
+      </select>
+      <button type="button" class="btn btn-primary" ng-click="pagar_destino()">Pagar</button>
+    -->
+
+    <!--aplicar iconos a los botones>
+      ejemplos:
+      dollar-sign, de https://fontawesome.com/v5.15/icons?d=gallery&p=2&c=currency
+      https://glyphicons.bootstrapcheatsheets.com/
+    -->
+    
+      <a
+      ng-if="x.check_realizado != 1" 
+      class="badge badge-pill badge-danger text-white" role="button"
+      href="#!/chat/{{ x.id }}" 
+      title="El operador debe realizar el pago y notificarlo con captura del comprobante">Pagar</a>
+
+      <a
+      ng-if="x.check_realizado == 1" 
+      class="badge badge-pill badge-primary text-white" role="button"
+      href="#!/chat/{{ x.id }}" 
+      title="El operador debe revisar los datos y captura de pago y confirmar. Si hubo algún error se debe corregir mnediante esta opción">Verificar Pago</a>
+    </td>
+
+<!--comentarios/obs-->
+<!--
+      <td>{{x.observ}}</td>
+    -->
+    </tr>
+    <tfoot>
+    <tr ng-if="!resultados_destino || resultados_destino.length == 0">
+      <td class="text-danger">No hay pagos registrados todavía.</td>
+    </tr>
+    <tr ng-if="resultados_destino.length > 0">
+      <td class="text-primary">Total Pagado: </td>
+      <td class="text-right" style="padding-right:50px;">{{total_pagado | number:0 }}</td>
+    </tr>
+    <tr ng-if="resultados_destino.length > 0">
+      <td class="text-danger">Pago Pendiente: </td>
+      <td class="text-right" style="padding-right:50px">{{pago_pendiente | number:0}}</td>
+    </tr>
+    </tfoot>
+  </table>
+<!--
+<div class="debug">
+  Debug:
+{{$scope.resultados_destino | json}}
+</div>
+-->
+</div>

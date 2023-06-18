@@ -1,0 +1,133 @@
+<!--pagina principal de calculadora-->
+<!--usando bootstrap-->
+<div class="container">
+  <div class="row">
+    <!--columna 1, izquierda. para instrucciones-->
+    <div class="col-sm-3" style="align-content: left">
+      <h3>Calculadora</h3>
+      <div class="instrucciones">
+        <div ng-include="'calc/instrucciones.html'"></div>
+        <br>
+        <!--p>Progreso: <progress id="progreso_pasos" max="100" value="20" ng-model="paso"></progress></p-->
+        <p><progress id="progreso_pasos" max="5" value="1" ng-model="paso" title="Progreso de la operación: Paso {{paso}} de 5"></progress>
+        Paso {{paso}} de 5</p>
+      </div>
+</div>
+
+
+<!--Columna 2, centro-->
+<!--PASO 1 - calculo de la remesa-->
+  <div class="col-sm-5">
+  <div ng-show="paso==1">
+    <div ng-include="'calc/calculo.html'"></div>    
+</div>
+
+<!--TODO. IDEA. mejora rendimiento -> inyectar cada div desde el controlador a medida que cambia el valor de paso-->
+
+
+<!--PASO 2 - pago en origenl, proporcionar los datos para que el usuario pague en el pais origen-->
+<div class="form-group" ng-show="paso==2" ng-class="{'has-error': myForm.myDecimal.$invalid}">
+  <form name="form4"><!-- novalidate -->
+    <h3>Pago en {{data.nombre_pais1}}</h3>
+    <h4></h4>
+    <div ng-include="'calc/origen.html'"></div>
+  </form>
+</div>
+
+
+<!--PASO 3 - pago en origenl, proporcionar los datos para que el usuario pague en el pais origen-->
+<div class="form-group" ng-show="paso==3">
+  <form name="form5"><!-- novalidate -->
+    <h3>Confirmar Pago</h3>
+    <div ng-include="'calc/resumen.html'"></div>
+  </form>
+</div>
+<!--PASO 4 - pago en destino, cuentas bancarias-->
+<div class="form-group" ng-show="paso==4" ng-class="{'has-error': myForm.myDecimal.$invalid}">
+  <form name="form3"><!-- novalidate -->
+    <h3>Datos de Beneficiario</h3>
+    <h4>(en {{data.nombre_pais2}})</h4>
+    <div ng-include="'calc/destino.html'"></div>
+  </form>
+</div>
+
+
+<!--PASO 5 - datos de usuario-->
+<div class="form-group" ng-show="paso==5" ng-class="{'has-error': myForm.myDecimal.$invalid}">
+  <form name="form2"><!-- novalidate -->
+    <h3>Registro de usuario</h3>
+    <div ng-include="'calc/user.html'"></div>
+  </form>
+</div>
+
+<div class="botones-centrados" style="align-content:center">
+  <!--TODO. deshabilitar botón si los montos indicados están fuera de rango válido-->
+  <button class="button-centrado" ng-click="goNext()" ng-show="paso == 1"
+  ng-disabled="form1.$invalid" ng-if="tasa_USD_Bs_final && tasa_Gs_Bs_final">Solicitar Remesa</button>
+  
+  <button class="button-centrado" ng-click="goBack()" ng-show="paso >= 2">Atrás</button>
+
+  <button class="button-centrado" ng-click="goNext()" ng-show="paso != 1 && paso != 5">Continuar</button><!--TODO. colocar && paso != 3-->
+
+  <button class="button-centrado" ng-click="goNext()" ng-show="paso == 3 && $ctrl.pagos=='ok' ">Continuar</button>
+
+  <!--button class="button-centrado" title="Confirmar transacción *en desarrollo*" ng-show="paso == 5">Ignorar</button-->
+  <!--ng-click="goNext()"-->
+  <!--button class="button-centrado" ng-click="goNext()" ng-show="paso == 4" 
+  title="Saltar este paso">Saltar Paso</button-->
+  <!--button class="button-centrado" ng-click="confirm()" ng-show="paso == 5 || paso == 2" 
+  title="Confirmar transacción">Proceder</button-->
+  
+  <button class="button-centrado" ng-show="paso == 5"
+  title="Registrar solicitud de remesa *en desarrollo*">Confirmar</button> <!--ng-click="goNext()" -->
+</div>
+</div>
+
+
+
+<!--3era Columna a la derecha-->
+<div class="col-sm-3">
+  <!--Resumen de la operación-->
+ <div class="resumen" ng-show="paso>=2 && paso<=4">
+  <!--b>Resumen</b-->
+  <br/>
+  <span id="data.resumen1">Envías: &nbsp;&nbsp;{{(data.monto1 | number : 0.0) + ' ' + data.simbolo_moneda1 }}</span>
+  <br/>
+  <span id="data.resumen1">Recibes: {{(data.monto2 | number : 0.0) + ' ' + data.simbolo_moneda2}}</span>
+  <hr>
+  <!--TODO. colocar bandera --flecha-> bandera-destino-->
+  <span>De: {{data.nombre_pais1}}</span>
+  <br/>
+  <span>A: {{data.nombre_pais2}}</span>
+  <!--TODO. agregar boton cancelar transaccion-->
+</div>
+
+<!--pruebas
+<div class="resumen">
+<hr>
+    {{ saludo}}
+    <h4>DATOS DEBUG: </h4>
+    <p>paso: {{ paso }}</p>
+    <p>modo: {{ modo }}</p>
+    <p>data: {{ data }}</p>
+    <p>user: {{ user }}</p>
+    <p>origen: {{ origen}}</p>
+    <p>destino: {{ destino}}</p>
+</div>
+-->
+</div>
+
+</div>
+<!--span>
+Fecha actualización código: 2020-06-29, Hora: 08:08
+</span-->
+</div>
+
+
+<div>
+<!--
+  <p style="align-content: center; text-align: center;">
+    <a href="#!/calc/2">Siguiente paso &gt;&gt;&gt;</a>
+  </p>
+-->
+</div>

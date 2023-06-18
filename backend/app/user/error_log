@@ -1,0 +1,72 @@
+[15-Sep-2021 11:42:48 America/New_York] PHP Notice:  Undefined variable: conn in /home/naguarab/public_html/backend/app/user/get_user_frontend.php on line 28
+[15-Sep-2021 11:42:48 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home/naguarab/public_html/backend/app/user/get_user_frontend.php:28
+Stack trace:
+#0 {main}
+  thrown in /home/naguarab/public_html/backend/app/user/get_user_frontend.php on line 28
+[15-Sep-2021 11:42:57 America/New_York] PHP Notice:  Undefined variable: conn in /home/naguarab/public_html/backend/app/user/get_user_frontend.php on line 28
+[15-Sep-2021 11:42:57 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home/naguarab/public_html/backend/app/user/get_user_frontend.php:28
+Stack trace:
+#0 {main}
+  thrown in /home/naguarab/public_html/backend/app/user/get_user_frontend.php on line 28
+[15-Sep-2021 11:43:26 America/New_York] PHP Notice:  Undefined variable: conn in /home/naguarab/public_html/backend/app/user/get_user_frontend.php on line 28
+[15-Sep-2021 11:43:26 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home/naguarab/public_html/backend/app/user/get_user_frontend.php:28
+Stack trace:
+#0 {main}
+  thrown in /home/naguarab/public_html/backend/app/user/get_user_frontend.php on line 28
+[15-Sep-2021 11:44:15 America/New_York] PHP Notice:  Undefined variable: conn in /home/naguarab/public_html/backend/app/user/get_user_frontend.php on line 28
+[15-Sep-2021 11:44:15 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home/naguarab/public_html/backend/app/user/get_user_frontend.php:28
+Stack trace:
+#0 {main}
+  thrown in /home/naguarab/public_html/backend/app/user/get_user_frontend.php on line 28
+[15-Sep-2021 11:51:49 America/New_York] PHP Notice:  Undefined variable: conn in /home/naguarab/public_html/backend/app/user/get_user_frontend.php on line 28
+[15-Sep-2021 11:51:49 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home/naguarab/public_html/backend/app/user/get_user_frontend.php:28
+Stack trace:
+#0 {main}
+  thrown in /home/naguarab/public_html/backend/app/user/get_user_frontend.php on line 28
+[15-Sep-2021 11:52:23 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function fetch_array() on bool in /home/naguarab/public_html/backend/app/user/get_user_frontend.php:33
+Stack trace:
+#0 {main}
+  thrown in /home/naguarab/public_html/backend/app/user/get_user_frontend.php on line 33
+[15-Sep-2021 11:52:30 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function fetch_array() on bool in /home/naguarab/public_html/backend/app/user/get_user_frontend.php:33
+Stack trace:
+#0 {main}
+  thrown in /home/naguarab/public_html/backend/app/user/get_user_frontend.php on line 33
+[15-Sep-2021 11:53:44 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function fetch_array() on bool in /home/naguarab/public_html/backend/app/user/get_user_frontend.php:33
+Stack trace:
+#0 {main}
+  thrown in /home/naguarab/public_html/backend/app/user/get_user_frontend.php on line 33
+[15-Sep-2021 11:53:46 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function fetch_array() on bool in /home/naguarab/public_html/backend/app/user/get_user_frontend.php:33
+Stack trace:
+#0 {main}
+  thrown in /home/naguarab/public_html/backend/app/user/get_user_frontend.php on line 33
+[15-Sep-2021 11:54:18 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function fetch_array() on bool in /home/naguarab/public_html/backend/app/user/get_user_frontend.php:33
+Stack trace:
+#0 {main}
+  thrown in /home/naguarab/public_html/backend/app/user/get_user_frontend.php on line 33
+[15-Sep-2021 11:55:27 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function fetch_array() on bool in /home/naguarab/public_html/backend/app/user/get_user_frontend.php:33
+Stack trace:
+#0 {main}
+  thrown in /home/naguarab/public_html/backend/app/user/get_user_frontend.php on line 33
+[15-Sep-2021 11:55:52 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function fetch_array() on bool in /home/naguarab/public_html/backend/app/user/get_user_frontend.php:33
+Stack trace:
+#0 {main}
+  thrown in /home/naguarab/public_html/backend/app/user/get_user_frontend.php on line 33
+[15-Sep-2021 11:55:55 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function fetch_array() on bool in /home/naguarab/public_html/backend/app/user/get_user_frontend.php:33
+Stack trace:
+#0 {main}
+  thrown in /home/naguarab/public_html/backend/app/user/get_user_frontend.php on line 33
+[15-Sep-2021 11:56:49 America/New_York] PHP Notice:  Undefined variable: conn in /home/naguarab/public_html/backend/app/user/get_user_frontend.php on line 56
+[15-Sep-2021 11:56:49 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function close() on null in /home/naguarab/public_html/backend/app/user/get_user_frontend.php:56
+Stack trace:
+#0 {main}
+  thrown in /home/naguarab/public_html/backend/app/user/get_user_frontend.php on line 56
+[15-Sep-2021 11:58:01 America/New_York] PHP Notice:  Undefined variable: conn2 in /home/naguarab/public_html/backend/app/user/get_user_frontend.php on line 28
+[15-Sep-2021 11:58:01 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home/naguarab/public_html/backend/app/user/get_user_frontend.php:28
+Stack trace:
+#0 {main}
+  thrown in /home/naguarab/public_html/backend/app/user/get_user_frontend.php on line 28
+[15-Sep-2021 11:58:03 America/New_York] PHP Notice:  Undefined variable: conn2 in /home/naguarab/public_html/backend/app/user/get_user_frontend.php on line 28
+[15-Sep-2021 11:58:03 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home/naguarab/public_html/backend/app/user/get_user_frontend.php:28
+Stack trace:
+#0 {main}
+  thrown in /home/naguarab/public_html/backend/app/user/get_user_frontend.php on line 28

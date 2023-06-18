@@ -1,0 +1,144 @@
+<!--instrucciones de uso de la calculadora-->
+
+        <!--span style="font-weight: bold">Instrucciones</span-->
+
+        <br>
+
+        <span ng-show="paso==1"><h4>Paso 1</h4><br>
+
+          Indique el monto a enviar.<br>
+
+          Puede ingresarlo de 2 formas: <br>
+
+          En monto en la moneda local ({{data.nombre_plural_moneda1}}). <br>
+	  <br>
+	
+          En dólares ($USD).<br><br>
+
+          Al escribir en una moneda, se calculan los otros montos.<br>
+
+          <!--(<b>Gs.:</b> 60.000 a 3.000.000)<br-->
+
+        </span>
+
+        <span ng-show="paso==1"><br>
+
+          <span style="color:blue">
+
+            <b>Límites: </b><br>
+
+            5 a 200 dólares.<br></span>
+
+        </span>
+
+
+
+        <span ng-show="paso==2"><h4>Paso 2</h4><br>  
+
+          Elige la forma de pago y la plataforma te indicará los datos para realizar tu pago.
+
+          <!--Toma nota de estos datos para realizar tu pago a la plataforma.-->
+
+          <!--Luego de realizar el pago, nos indicaras un comprobante (sea foto o imagen escaneada), para verificación y posterior envío de los fondos a la cuenta especificada en 
+
+          -->
+
+          <!--span>{{data.nombre_pais1}}</span-->
+
+          </span>
+
+
+
+        <span ng-show="paso==3"><h4>Paso 3</h4>
+
+          <br>
+
+          Por favor realice el pago y envíe el comprobante mediante el botón Enviar.
+
+        <br><br>
+
+        Tiene 90 MINUTOS para reportar el pago.
+
+        Luego de ese tiempo se ajusta de forma automática la tasa de cambio para su remesa.<br><br>
+
+
+
+        Le quedan X minutos.
+
+        <!--Al PROCEDER se origina una solicitud de operación, para confirmar su pago.<br><br>-->
+
+        </span>
+
+
+
+        <span ng-show="paso==4"><h4>Paso 3</h4>
+
+          <br>Indique la cuenta del beneficiario.<br><br>
+
+        Una vez finalizada la plataforma le notificará por correo.
+
+        <!--Igualmente puede descargarlo.-->
+
+          <!--TODO. agregar esta mejora. para posteriores versiones
+
+          <br>
+
+          Si quiere transferir a mas de una cuenta, presione el boton <b>Agregar Otra Cuenta</b>, luego de grabar la primera cuenta.-->
+
+        </span>
+
+
+
+        <span ng-show="paso==5"><h4>Paso 5</h4><br>
+
+          Indique datos de usuario para su registro. <br><br>
+
+          <a title="Ver política de privacidad" href="https://www.naguarabit.com/privacy-policy/" target="_BLANK">Sus datos personales no serán compartidos, respetamos su privacidad.</a><br><br>
+
+          <i>Si no desea registrarse, puede ignorar este paso. <!--br> saltar este paso.--></i>
+
+          <!--TODO. usar link en vez de botón-->
+
+          <!--span class="button-centrado" ng-click="goNext()" ng-show="paso == 5" 
+
+  title="Saltar este paso">Saltar este Paso</span-->
+
+
+
+      <br><br>
+
+          <i>Si ya está registrado, <a href="#!/login" title="Acceder a la plataforma">puede acceder aquí</a></i>
+
+
+
+          <!--TODO. usar link en vez de botón
+
+          <button class="button-centrado" href="#!/login" ng-show="paso == 5" title="Acceder a la plataforma">Acceder</button>
+
+          -->
+
+
+
+        </span>
+
+
+
+<!--
+
+Para el paso donde va a indicar los datos de envio:
+
+Por favor, revise todos los detalles.
+
+
+
+<span>
+
+  <br><br>
+
+        Este valor es para pruebas:
+
+  <input value="1234567890" size="10" style="width: 100px" disabled>
+
+</span>
+
+-->

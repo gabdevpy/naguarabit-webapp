@@ -1,0 +1,118 @@
+<!--pais/index.html, vista para editar datos de un pais-->
+<div>
+<div name="divform" ng-show="showForm"> 
+  <form><!-- novalidate -->
+    <h3>País</h3>
+    <br>Nombre *<br>
+    <input name="nombre" type="text" ng-model="data.nombre" 
+    ng-disabled="readonly" ng-readonly="readonly" auto-focus>
+    <br>
+
+    <br>Codigo *<br>
+    <input id="login" name="codigo" type="text" ng-model="data.codigo"
+    ng-disabled="readonly" ng-readonly="readonly" >
+    <!--auto-focus="{{ focusInput }}" value="auto-focus on"-->
+    <br>
+    <br>Moneda<br>
+    <input name="cod_moneda_oculto" type="hidden" ng-model="data.cod_moneda">
+  
+    <select name="cod_moneda" data-ng-model="data.cod_moneda" class="form-control input-sm"
+    ng-disabled="readonly" ng-readonly="readonly">
+      <option value = "">-- Seleccione una opcion --</option>
+      <option ng-repeat="a in lista_monedas" value="{{a.codigo}}">{{a.nombre}}</option>
+    </select>
+    <br>
+
+    <br>Observaciones<br>
+    <textarea name="observ" ng-model="data.observ" cols="50" rows="3" auto-focus>
+    </textarea>
+    <br>
+    <br>
+
+    <button type="button" class="button2"  ng-click="save()">Guardar</button>
+    <button type="button" class="button2"  ng-click="saveAndReset()">Guardar y Agregar(+)</button>
+<!--TODO. mostrar mensaje de confirmacion antes de borrar-->
+    <button type="button" class="button2"  ng-click="delete()">Borrar</button>
+<!--TODO.al presionar este boton. save+. y Luego de hacer reset, seria genial que coloque el foco en el primer campo: login-->
+
+<!-- TODO. quitar boton.solo de pruebas
+   <button ng-click="reset()">(Agregar)</button>
+-->
+  </form>
+
+<!--datos ocultos, dos formas de obtenerlos-->
+  <div style="visibility: hidden;">
+    <input name="id" type="hidden" ng-model="data.id">
+    <span name="pais_id" >data.id:{{data.id}}</span>
+  </div>
+
+  <p>
+    <a href="#!/paises/">&lt;&lt;&lt; Regresar a lista</a>
+  </p>
+
+</div>
+
+<!--debug-->
+  <!--
+  <p>(debug) data => {{ data }}</p>
+  <p>master = {{ master }}</p>
+-->
+
+<!--para test mensajes
+Show error: <input type="checkbox" ng-model="showError" aria-label="Toggle ngShow"><br />
+Show exito: <input type="checkbox" ng-model="mostrarExito" aria-label="Toggle ngShow"><br />
+-->
+<!--TODO. usar este bloque div para los mensajes, donde aplicar estilo: centrado, posicion, etc.
+<div class="ng-pristine" style="align-self: center; text-align: center; align-content: center">
+-->
+
+<div name="divMsjNoRegistro" ng-show="showErrorNotFound" class="error-element animate-show-hide">
+<p>{{msg}}</p>
+</div>
+
+<div name="divMensajeExito" ng-show="mostrarExito" class="exito-element animate-show-hide">
+<p>{{msg}}</p>
+<p>
+  <a href="#!/paises">Regresar a lista</a>
+</p>
+</div>
+
+<div name="divMensajeError" ng-show="showError == true" class="error-element animate-show-hide">
+<p>Message Operation: {{msg}}</p>
+
+<!--debug. mostrar todo estos datos si el nivel de depuracion de la app es DEBUG-ALL. colocarlo dentro de otro div-->
+<p>StatusCode: {{statusval}}</p>
+<p>Status: {{statustext}}</p>
+<p>Response Headers: {{headers}}</p>
+</div>
+
+</div>
+</div>
+
+<!--enfoque2 para llenar select. segun
+    https://stackoverflow.com/questions/39476181/angularjs-1-5-8-how-do-i-populate-a-select-option-list-directly-from-within
+
+  <select data-ng-model="data.cod_moneda" ng-options="moneda.codigo as moneda.nombre for moneda in lista_monedas" >
+    </select>
+-->
+
+    <!--valores fijos
+    <select  name="cod_moneda" data-ng-model="data.cod_moneda" class="form-control input-sm">
+      <option value = "">--Seleccione una Opcion--</option>
+      <option value = "$ARG">Peso Argentino</option>
+      <option value = "$BOL">Peso Boliviano</option>
+      <option value = "$COL">Peso Colombiano</option>
+      <option value = "$CHI">Peso Chileno</option>
+      <option value = "ECU">Moneda de Ecuador?...</option>
+      <option value = "GS">Guarani</option>
+      <option value = "PAN">Moneda de Panama...</option>
+      <option value = "PER">Sol Peruano</option>
+      <option value = "BS">Bolivar</option>
+    </select>
+  -->
+
+
+
+
+
+

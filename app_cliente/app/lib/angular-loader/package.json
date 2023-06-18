@@ -1,0 +1,64 @@
+{
+  "_from": "angular-loader@1.8.2",
+  "_id": "angular-loader@1.8.2",
+  "_inBundle": false,
+  "_integrity": "sha512-UyaVnPSGwZO4cG7zGYXnqHQ5emTDbl7TKAUA5+CDRS/c3d9pxtpHUlZH+jHvhgJAQyIkky4115L/R6bXJsf+EQ==",
+  "_location": "/angular-loader",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "angular-loader@1.8.2",
+    "name": "angular-loader",
+    "escapedName": "angular-loader",
+    "rawSpec": "1.8.2",
+    "saveSpec": null,
+    "fetchSpec": "1.8.2"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/angular-loader/-/angular-loader-1.8.2.tgz",
+  "_shasum": "93825992e4dca96cef94f4f7f633dfe040e8668b",
+  "_spec": "angular-loader@1.8.2",
+  "_where": "C:\\wamp64\\www\\naguarabit",
+  "author": {
+    "name": "Angular Core Team",
+    "email": "angular-core+npm@google.com"
+  },
+  "bugs": {
+    "url": "https://github.com/angular/angular.js/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "AngularJS module for asynchronously loading modules",
+  "homepage": "http://angularjs.org",
+  "jspm": {
+    "shim": {
+      "angular-loader": {
+        "deps": [
+          "angular"
+        ]
+      }
+    }
+  },
+  "keywords": [
+    "angular",
+    "framework",
+    "browser",
+    "loader",
+    "client-side"
+  ],
+  "license": "MIT",
+  "main": "angular-loader.js",
+  "name": "angular-loader",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/angular/angular.js.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.8.2"
+}

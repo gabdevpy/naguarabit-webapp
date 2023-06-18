@@ -1,0 +1,34 @@
+html, body, .page, .message-container {
+   height: 100%;
+  flex-direction: column;
+}
+
+.message-container, .message-form {
+    display: flex;
+}
+
+.message-form {
+  flex:1;
+  max-height:136px;
+   background-color: #009688 !important;
+  color: white;
+  margin-top:-15px;
+}
+
+.message-list {
+  flex: 1; overflow: auto;
+  margin-top:-1px;
+}
+
+.message-form .input-field input {
+ border-color: #FFFFFF;
+}
+
+.chip {
+ font-style: italic;
+}
+
+.mdi-communication-chat{
+  color:white;
+}
+

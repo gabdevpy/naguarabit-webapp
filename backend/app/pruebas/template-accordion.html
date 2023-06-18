@@ -1,0 +1,30 @@
+<!--
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+  <head>
+    <title></title>
+    <link data-require="bootstrap-css@3.1.1" data-semver="3.2.0" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+    <script data-require="jquery@*" data-semver="2.1.1" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
+    <script data-require="angular.js@*" data-semver="1.3.0-beta.5" src="https://code.angularjs.org/1.3.0-beta.5/angular.js"></script>
+    <script data-require="bootstrap@*" data-semver="3.1.1" src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.js"></script>
+  </head>
+
+  <body >
+  -->
+        <div id="{{parentId}}">
+            <div class="panel" ng-repeat="item in model">
+                <a href="#" data-toggle="collapse" data-parent="#{{parentId}}" data-target="#child{{$index}}" ng-click="model.selected = item">{{item.title}}
+                </a>
+                <div id="child{{$index}}" ng-class="{'collapse':true}">
+                    <ul>
+                        <li ng-repeat="subitem in item.subitems">{{subitem}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </script>
+    <accordion model="model" id="test"></accordion>
+  </body>
+
+</html>

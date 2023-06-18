@@ -1,0 +1,97 @@
+<!--bancos/index.hml, vista para editar lista de bancos-->
+<div>
+<div name="divform" ng-show="showForm"> 
+  <form><!-- novalidate -->
+    <h3>Forma de pago</h3>
+    
+    <br>Nombre<br>
+    <input name="nombre" type="text" ng-model="data.nombre" readonly disabled required>
+    <br>
+
+    <br>Codigo<br>
+    <input id="login" name="codigo" type="text" ng-model="data.codigo" readonly disabled required>
+    <!--auto-focus="{{ focusInput }}" value="auto-focus on"-->
+  
+    <br>
+    <br>Banco<br>
+    <input name="nombrebank" type="text" ng-model="data.nombrebank" readonly disabled required>
+
+    <br>
+    <br>País<br>
+    <input name="pais" type="text" ng-model="data.nombre_pais" readonly disabled required>
+
+    <br>
+    <br>Descripción completa<br>
+  <textarea name="descripcion" ng-model="data.descripcion" cols="50" rows="3"
+  placeholder="Descripción completa de la forma de pago para enviar al cliente"
+  title="Descripción completa de la forma de pago para enviar al cliente"
+  maxlength="1000"
+  class="form-control input-sm"
+  auto-focus required>
+</textarea>
+
+
+    <!--programar funcion de activar y desactivar forma de pago
+      ng-click="save()" ng-click="activar()" ng-click="desactivar()"
+    -->
+    <br>
+    <button type="button" class="button2" title="Pendiente de programar. Actualizar datos. Para ello se tienen que activar los campos editables."
+    ng-click="save()">Guardar</button>
+    
+    <button type="button" class="button2" title="Pendiente de programar"
+    ng-if="data.estatus_activo==0"
+    ng-click="cambiarEstatus();">Activar</button>
+
+    <button type="button" class="button2" title="Pendiente de programar"
+    ng-if="data.estatus_activo==1"
+    ng-click="cambiarEstatus();">Desactivar</button>
+    <br/>
+
+  </form>
+
+<!--datos ocultos, dos formas de obtenerlos-->
+  <div style="visibility: hidden;">
+    <input name="id" type="hidden" ng-model="data.id">
+    <span name="pais_id" >data.id:{{data.id}}</span>
+  </div>
+
+  <p> <a href="#!/formapago/">&lt;&lt;&lt; Regresar a lista</a> </p>
+
+</div>
+
+<!--debug-->
+  <!--
+  <p>(debug) data => {{ data }}</p>
+  <p>master = {{ master }}</p>
+-->
+
+<!--para test mensajes
+Show error: <input type="checkbox" ng-model="showError" aria-label="Toggle ngShow"><br />
+Show exito: <input type="checkbox" ng-model="mostrarExito" aria-label="Toggle ngShow"><br />
+-->
+<!--TODO. usar este bloque div para los mensajes, donde aplicar estilo: centrado, posicion, etc.
+<div class="ng-pristine" style="align-self: center; text-align: center; align-content: center">
+-->
+
+<div name="divMsjNoRegistro" ng-show="showErrorNotFound" class="error-element animate-show-hide">
+<p>{{msg}}</p>
+</div>
+
+<div name="divMensajeExito" ng-show="mostrarExito" class="exito-element animate-show-hide">
+<p>{{msg}}</p>
+<p>
+  <a href="#!/paises">Regresar a lista</a>
+</p>
+</div>
+
+<div name="divMensajeError" ng-show="showError == true" class="error-element animate-show-hide">
+<p>Message Operation: {{msg}}</p>
+
+<!--debug. mostrar todo estos datos si el nivel de depuracion de la app es DEBUG-ALL. colocarlo dentro de otro div-->
+<p>StatusCode: {{statusval}}</p>
+<p>Status: {{statustext}}</p>
+<p>Response Headers: {{headers}}</p>
+</div>
+
+</div>
+</div>

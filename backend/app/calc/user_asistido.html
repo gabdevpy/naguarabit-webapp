@@ -1,0 +1,106 @@
+<!-- este es el form de datos de user, asistido.
+  para que un operador pueda registrar los datos de un usuario,
+  a la hora de solicitar una remesa "asistida""
+con busquedas por:
+login/username
+nombre
+nrodoc: cedula/pasaporte
+
+ -->
+
+<div>
+<!-- form -->
+
+<div name="divForm">
+  <form><!-- novalidate -->
+    <!--
+    <h3>Datos de usuario</h3>
+  -->
+
+    <input name="login" type="text" ng-model="user.login" maxlength="30" value="gperez"
+    class="form-control input-sm" placeholder="Login de usuario" auto-focus>
+
+    <br/>
+    <input name="nombre" type="text" ng-model="user.nombre" placeholder="Nombre" auto-focus maxlength="35"
+    class="form-control input-sm" >
+
+    <br/>
+    <input name="apellido" type="text" ng-model="user.apellido" placeholder="Apellido"
+    maxlength="35"
+    class="form-control input-sm" >
+
+    <br/>
+    <input name="email" type="text" ng-model="user.email" placeholder="Correo electrónico"
+    maxlength="35"
+    class="form-control input-sm" >
+
+    <br/>
+    <input name="telefono" type="text" ng-model="user.telefono" maxlength="15" placeholder="Teléfono"
+    class="form-control input-sm">
+
+<!--País residencia-->
+  <br/>
+    <select name="cod_pais" ng-model="user.cod_pais" class="form-control input-sm" ng-change="changeCiudades()">
+      <option value="">País de residencia</option>
+      <option ng-repeat="a in lista_paises" value="{{a.codigo}}">{{a.nombre}}</option>
+    </select>
+    <br/>
+
+<!--<br/>Ciudad residencia<br/>-->
+    <select name="cod_ciudad" ng-model="user.cod_ciudad" class="form-control input-sm">
+      <option value="">Ciudad</option>
+      <option ng-repeat="a in lista_ciudades" value="{{a.codigo}}">{{a.nombre}}</option>
+    </select>
+    <br/>
+
+  <textarea name="observ" ng-model="user.observ" cols="50" rows="3" placeholder="Notas/Observaciones"
+  class="form-control input-sm">
+  </textarea>
+
+  </form>
+
+  <div style="visibility: hidden;">
+    <input name="id" type="hidden" ng-model="user.id">
+    <span name="user_id" >user id:{{user.id}}</span>
+  </div>
+
+</div>
+
+<div name="divMsjNoRegistro" ng-show="showErrorNotFound" class="error-element animate-show-hide">
+<p>{{msg}}</p>
+</div>
+
+<div name="divMensajeExito" ng-show="mostrarExito" class="exito-element animate-show-hide">
+<p>{{msg}}</p>
+</div>
+
+<div name="divMensajeError" ng-show="showError == true" class="error-element animate-show-hide">
+<p>Message Operation: {{msg}}</p>
+
+<!--debug. TODO. solo mostrar estos datos si el nivel de depuracion de la app es DEBUG-ALL. colocarlo dentro de otro div-->
+<p>StatusCode: {{statusval}}</p>
+<p>Status: {{statustext}}</p>
+<p>Response Headers: {{headers}}</p>
+</div>
+
+  <!--pruebas
+    <p>resumen: {{ $scope.resumen}}</p>
+    <input name="login" type="text" ng-model="user.login" auto-focus>
+    <p>saludo: {{ saludo}}</p>
+<p>login: {{ paramLogin}}</p>
+<p>showError: {{ showError}}</p>
+<p>showForm: {{ showForm}}</p>
+  $scope.showErrorNotFound = false;
+-->
+
+
+</div>
+
+<!--debug
+  <p>(debug) user => {{ user }}</p>
+  <p>(debug) paises => {{ lista_paises }}</p>
+  <p>(debug) ciudades => {{ lista_ciudades }}</p>
+-->
+<!--
+  <p>master = {{ master }}</p>
+-->

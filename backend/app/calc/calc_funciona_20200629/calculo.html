@@ -1,0 +1,164 @@
+<form name="form1" align="left" ><!-- novalidate -->
+  <!--TODO. pasar contenido del form a otro archivo: calculos.html-->
+  <div class="form-group" ng-class="{'has-error': myForm.myDecimal.$invalid}">
+    <!--
+    <h3>Calcular remesa</h3>
+  -->
+  <!--TODO. IDEA MEJORA. usar banderas de origen y destino, para quitar esas palabras de titulos, cargar bandera cuando se elige pais en select-->
+  <h4>Desde</h4>
+  <!--TODO. El pais por defecto inicialmente es Paraguay.
+    En siguientes versiones, será el pais de donde el usuario está logueado.
+    Otra opción es que el usuario pueda indicar en su perfil cuál es el país donde reside.
+    O que pueda establecer el par de países por defecto que usará (origen/destino).
+    Pero siempre permitiendo cambiarlo al momento de usar la calculadora.
+  -->
+  <select name="cod_pais1" ng-model="data.cod_pais1" class="form-control input-sm" ng-change="cargarMonedaPais()" disabled>
+    <option value="">- País Origen -</option>
+    <option ng-repeat="a in lista_paises" value="{{a.codigo}}">{{a.nombre}}</option>
+  </select>
+  <br/>
+<!--
+Moneda:
+     <label name="cod_moneda1_oculto" ng-model="data.cod_moneda1" disabled>
+     </label>
+ <!//--aqui va el select de moneda:
+  <select id="cod_moneda1" name="cod_moneda1" type="text" ng-model="data.cod_moneda1" readonly
+<!//--auto-focus="{{ focusInput }}" value="auto-focus on"
+<br/>
+-->
+
+<!--TODO. los limites min y maximos deberian ser establecidos via base de datos, y no en codigo
+filtro para mostrar separador de miles y punto decimal: | number: 0.0
+ng-min="limites_montos_Gs['min']"
+ng-value="limites_montos_Gs['min']"
+ng-max="limites_montos_Gs['max']"
+
+//TODO. validar solo nros
+onkeydown="var validChars = ['0','1','2','3','4','5','6','7','8','9'];if (!validChars.includes(event.key) && event.keyCode!=8 && event.keyCode!=86 && event.keyCode!=37  && event.keyCode!=39) {event.preventDefault()}"
+
+
+//TODO. hacer en el controlador:
+Aplicar el ng-pattern solo en otras monedas.
+pues el Guaraní no usa decimales
+if(data.cod_moneda1 != 'Gs')
+
+ string-to-number
+-->
+<div>
+  <input name="monto1_edit" type="number"
+  
+  ng-model="data.monto1" ng-change="calcular2_A(); calcular3_A()"
+  auto-focus required min="5000" max="6500000"
+  class="form-control input-sm"
+  style="width: 150px"
+  ng-pattern="/^[0-9]+?$/">
+  <!--
+    todo. establecer monto min y max segun formula o valor en bd
+    ng-min="65000" ng-max="5000000" min="65000" max="5000000"
+  step="50" 
+  -->
+  
+  <span name="monto1_show" class="monto">{{data.monto1 | number: 0.0}}</span>
+  
+  <span>{{data.simbolo_moneda1}} ({{data.nombre_plural_moneda1}})</span>
+  <!--span>{{data.simbolo_moneda1}} ({{data.cod_moneda1}})</span-->
+</div>
+<div role="alert">
+  <span class="error" ng-if="form1.monto1.$error.required">Valor requerido</span>
+</div>
+</div>
+
+<!--div ng-show="!editarMonto1" ng-click="editarMonto1=true" title="Haz click para editar monto">
+  <span name="monto1_show">{{data.monto1 | number: 0.0}}</span>
+  <br>
+    <span>{{data.simbolo_moneda1}} ({{data.nombre_plural_moneda1}})</span>
+  </div-->
+  <!--span>{{data.simbolo_moneda1}} ({{data.cod_moneda1}})</span-->
+
+  <!--campo original monto1-->
+<!--
+<input name="monto1" type="number" step="50" ng-min="12000" ng-max="5000000" min="12000" max="5000000"
+ng-model="data.monto1" ng-change="calcular2(); calcular3()"
+required auto-focus
+class="form-control input-sm"
+style="width: 150px"
+ng-pattern="/^[0-9]+?$/"
+<span>{{data.simbolo_moneda1}} ({{data.cod_moneda1}})</span>
+-->
+<!--
+<span>Is a valid decimal? {{form1.monto1.$valid}}</span>
+-->
+<br>
+<br>
+
+<!--TODO. el pais por defecto es Paraguay. Luego sera el pais donde el usuario esta logueado, o el pais definido por defecto por el usuario-->
+<h4>Hacia</h4>
+<select name="cod_pais2" ng-model="data.cod_pais2" class="form-control input-sm"
+ng-change="cargarMonedaPais2()" disabled>
+<option value="">- País Destino -</option>
+<!--option value="VEN">Venezuela</option-->
+<option ng-repeat="a in lista_paises" value="{{a.codigo}}">{{a.nombre}}</option>
+</select>
+
+<!--
+<br/>Moneda<br/>
+ <input name="cod_moneda2" type="text" ng-model="data.cod_moneda2" d  isabled>
+-->
+ <!--aqui va el select:
+  <select id="cod_moneda1" name="cod_moneda1" type="text" ng-model="data.cod_moneda1" readonly
+-->
+<!--auto-focus="{{ focusInput }}" value="auto-focus on"
+min="110000"  max="2000000"
+ng-value="{{data.monto2 | number: 0.0}}"
+-->
+<!--TODO. mostrar mensajes de error para montos min y max-->
+<br>
+
+<!--monto en moneda destino-->
+<div>
+  <input type="number" name="monto2" ng-model="data.monto2" ng-change="calcular1_A();calcular3_B()"
+  step="10" ng-pattern="/^[0-9]+?$/"
+  required
+  class="form-control input-sm" style="width: 150px">
+
+  <span name="monto2_show" class="monto">{{data.monto2 | number: 0}}</span>
+  <span> {{data.simbolo_moneda2}} ({{data.nombre_plural_moneda2}})</span>
+
+  <!--validacion-->
+  <div role="alert">
+    <span class="error" ng-if="form1.monto2.$error.required">Valor requerido</span>
+    <!--span class="error" ng-if="!form1.monto2.$valid">Valor no permitido</span-->
+  </div>
+
+  <!--span> {{data.simbolo_moneda2}} ({{data.cod_moneda2}})</span-->
+<!--TODO. activar edicion al hacer doble click en el campo, o al click en Editar,
+y a su vez cambiar el monto1 a disabled=true
+<a href="" title="Al hacer click activara el campo para modificar valor">Editar</a>
+ng-pattern="/^[0-9]{1,3}(\.[0-9][0-9])?$/" >> patron de 3 numeros enteros con 2 decimales
+string-to-number
+step="0.01" min="10" max="200" ng-min="10" ng-max="200" maxlength="6"
+-->
+</div>
+
+<br><br>
+<!--h5>Equivalente en dólares</h5-->
+<!--ng-value="{{data.monto3 | number:2}}" -->
+<input name="monto3" type="text" ng-model="data.monto3" ng-change="calcularConBaseUSD()"
+class="form-control input-sm"
+style="width: 150px"
+>
+<span>Dólares ($USD)</span>
+<!--validacion-->
+<div role="alert">
+  <span class="error" ng-if="form1.monto3.$error.required">Campo requerido</span>
+  <!--span class="error" ng-if="!form1.monto3.$valid">Valor no permitido</span-->
+</div>
+</div>
+</div>
+</form>
+
+<div id="debug" ng-show="false">
+data: {{ data | json}}</pre><br>
+monto3 : {{ monto3 }}<br>
+monto3.tipo de dato : {{ typeOf(monto3) }}
+</div>

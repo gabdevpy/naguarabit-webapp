@@ -1,0 +1,64 @@
+<div><!-- class="container"-->
+	<!--h5>Confirmar Pago*</h5-->
+
+	<!--uso de componente angular-file-upload, con mismo controlador padre
+		<div>
+			<input type="file" nv-file-select uploader="uploader"/><br/>
+			<ul>
+				<li ng-repeat="item in uploader.queue">
+					Comprobante: <span ng-bind="item.file.name"></span><br/>
+					<button ng-click="item.upload()">upload</button>
+				</li>
+			</ul>
+		</div>
+	-->
+
+	  <!--uso de componente angular-file-upload, con controlador aparte
+		por ahora solo permite ver 1 adjunto,
+		Detalle: solo muestra el nombre del comprobante, no la vista previsa-->
+		<!--
+	-->
+		<div ng-app="myApp.calcPago">
+			<div ng-controller="AdjuntosCtrl">
+				<input type="file" nv-file-select uploader="uploader"	 /><br/>
+				<ul>
+					<li ng-repeat="item in uploader.queue">
+						<span ng-bind="item.file.name"></span><br/>
+						<button ng-click="item.upload()">Enviar comprobante</button>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+<!--TODO. AHORA. en proceso. finalizar-->
+<!--
+<div id="ng-app" ng-app="myApp.ArchivosAdjuntos">
+ <div ng-show="uploader.isHTML5">
+                        <div nv-file-drop="" uploader="uploader" options="{ url: '/foo' }">
+                            <div nv-file-over="" uploader="uploader" over-class="another-file-over-class" class="well my-drop-zone">
+                                Arraste archivo(s) aquí para cargar
+                            </div>
+                        </div>
+                        <input type="file" nv-file-select="" uploader="uploader" multiple  /><br/>
+                    </div>
+</div>
+-->
+
+		<!--adjuntar comprobantes en forma manual, sin usar angular-file-upload-->
+<!--div class="container">
+	<br>
+	<a href="#" ng-if="pago == 1">Adjuntar comprobante en forma manual</a>
+	<br>
+
+	<a href="#" ng-if="pago == 2">Adjuntar otro comprobante (2)</a>
+	<br>
+
+	<a href="#" ng-if="pago == 3">Adjuntar otro comprobante (3)</a>
+	<br>
+
+	<a href="#" ng-if="pago > 1">Listo</a>
+	<br>
+</div>
+-->
+
+</div>

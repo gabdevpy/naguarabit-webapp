@@ -1,0 +1,79 @@
+<div class="container">
+
+<!--opcion 1 de busquedas-->
+<p><h4>Formas de pago (en país de origen)</h4>
+  <input type="text" ng-model="busq1" placeholder=" Buscar..." auto-focus>
+</p>
+<!--TODO. insertar select para filtrar por -->
+
+<!--opcion 3, combinar 2 filtros-->
+<!--
+<p><h4>Bancos</h4>
+<ul class="menu">
+  <li><input type="text" ng-model="busq1" auto-focus></li>
+  <li>
+    <div class="form-row">
+    <select name="cod_pais_filtro" ng-model="bancos.cod_pais_filtro" class="form-control input-sm" ng-init="VEN">
+      <option value="">- Filtrar por País -</option>
+      <option ng-repeat="a in lista_paises" value="{{a.codigo}}">{{a.nombre}}</option>
+    </select></div>
+  </li>
+</ul>
+</p>
+-->
+
+
+
+<!--opcion 2 de busquedas:
+<p><b>Bancos</b>
+  <div class="form-row">
+    <input type="text" ng-model="busq1" auto-focus placeholder="Buscar por nombre">
+    <select name="cod_pais_filtro" ng-model="bancos.cod_pais_filtro" class="form-control input-sm" ng-value="VEN">
+      <option value="">- País -</option>
+      <option ng-repeat="a in lista_paises" value="{{a.codigo}}">{{a.nombre}}</option>
+    </select>
+  </div>
+</p-->
+
+<table width="100%" class="table table-sm table-hover">
+	<tr>
+   <th>Código</th>
+   <th>País</th>
+   <th>Nombre</th>
+   <th>Banco</th>
+   <th>Titular</th>
+   <th>Estatus</th>
+ </tr>
+ <tr ng-repeat="x in resultados | filter:busq1">
+  <!--TODO. cambiar param codigo a id-->
+  <td><a title="Ver + detalles" href="#!/formapago/{{ x.codigo }}">{{ x.codigo }}</a></td>
+  <td><a href="#!/pais/{{ x.codpais }}" title="Ver sólo los bancos de {{ x.nombre_pais }} (*pendiente)">{{ x.nombre_pais }}</a></td>
+  <!--TODO. posible. colocar  campo observaciones-->
+  <td><a title="Ver + detalles" href="#!/banco/{{ x.nombre }}">{{ x.nombre }}</a></td>
+  <td>{{ x.banco_nombre }}</td>
+  <td>{{ x.nombretitular }}</td>
+  <td>{{(x.estatus_activo==1) && 'Habilitado' || 'NO Habilitado'}}</td>
+
+</table>
+
+<div>
+  <button class="button2" type="button" ng-click="new()">Agregar</button>
+<!--
+opcion b, que ctrl de paises cambie url a pais/new
+  <a title="Agregar registro" href="#!/paises/new">Agregar</a>
+-->
+</div>
+<br>
+
+</div>
+
+<!--
+    <td><a title="Ver detalles" href="#!/user/?login={{ x.login }}">{{ x.nombre }}</a></td>
+    <td><a title="Enviar mensaje" href="#!/user/?login={{ x.login }}">{{ x.email }}</a></td>
+    <td><a href="#!/user/{{ x.login }}">Ver más detalles</a></td>
+  -->
+
+    <!--TODO. agregar datos y hacer link a datos por pais y ciudad
+    <td><a title="(+) Listar usuarios de este pais" href="#!/user/">{{ x.pais }}</a></td>
+    <td><a title="(+) Listar usuarios de esta ciudad" href="#!/user/">{{ x.ciudad }}</a></td>
+  -->

@@ -1,0 +1,50 @@
+<!--template de lista de parida del BTC con las otras monedas-->
+<div>
+<!--
+  <p>Saludos: {{ saludo}}</p>
+-->
+<!--TODO.DESEO.    //enfocar campo de busqueda
+<p>Buscar:<input type="text" ng-model="busq1"
+  auto-focus="{{ focusInput }}" value="auto-focus on"></p>
+-->
+
+<p><b>BTC Paridad</b> | Buscar por nombre de moneda:
+  <input type="text" ng-model="busq1" auto-focus>
+</p>
+
+<table width="100%">
+	<tr>
+   <th>Código</th>
+   <th>Nombre</th>
+   <th>Símbolo</th>
+   <th>Valor respecto al BTC</th>
+ </tr>
+ <tr ng-repeat="x in resultados | filter:busq1">
+  <td><a title="Ver + detalles" href="#!/moneda/{{ x.codigo }}">{{ x.codigo }}</a></td>
+  <td><a title="Ver + detalles" href="#!/moneda/{{ x.codigo }}">{{ x.nombre }}</a></td>
+  <td>{{ x.simbolo }}</td>
+  <td>{{ x.valor_BTC }}</td>
+<!--TODO. posible. colocar  campo observaciones-->
+</table>
+
+<div>
+<!--
+  <a title="Agregar registro" href="#!/pais/new">Agregar</a>
+-->
+<!--opcion b, que ctrl de paises cambie url a pais/new
+  <a title="Agregar registro" href="#!/paises/new">Agregar</a>
+-->
+</div>
+
+</div>
+
+<!--
+    <td><a title="Ver detalles" href="#!/user/?login={{ x.login }}">{{ x.nombre }}</a></td>
+    <td><a title="Enviar mensaje" href="#!/user/?login={{ x.login }}">{{ x.email }}</a></td>
+    <td><a href="#!/user/{{ x.login }}">Ver más detalles</a></td>
+  -->
+
+    <!--TODO. agregar datos y hacer link a datos por pais y ciudad
+    <td><a title="(+) Listar usuarios de este pais" href="#!/user/">{{ x.pais }}</a></td>
+    <td><a title="(+) Listar usuarios de esta ciudad" href="#!/user/">{{ x.ciudad }}</a></td>
+  -->

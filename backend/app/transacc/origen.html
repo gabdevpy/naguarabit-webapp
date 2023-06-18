@@ -1,0 +1,59 @@
+<!--Muestra lista de pagos en origen para una transacción,
+
+por lo general debe ser 1 pago por remesa, pero pueden ser varios por motivos diversos-->
+
+<div>
+
+<h3 style="color: orange">Pago/s en origen (*falta finalizar programacion*)</h3>
+
+
+<table width="100%"  class="table table-sm table-hover">
+
+	<tr>
+
+    <!--TODO. mostrar moneda segun el pais:
+
+      Debe ajustarse la hora al pais destino, pues es la hora en que se hizo el pago al cliente,
+
+      o simplemente se coloca la hora de Vzla, por defecto, por ahora.-->
+
+      <th style="width:25px" title="Fecha que se indicó el pago">Fecha</th> <!--/Hora-->
+
+      <!--TODO. se debe traer codigo moneda destino en el query, x.destino_codmoneda-->
+
+      <th style="width:10%">Monto (Bs.{{x.codmoneda}})</th>
+
+      <th style="width:5%">Tipo Pago</th>
+
+      <th style="width:5%">Banco</th>
+
+      <th style="width:10%">Nro. de cuenta</th>
+
+      <th style="width:25%">Doc./Nombre de Titular</th>
+
+      <th style="width:7%" title="Verificado por el cliente o el beneficiario">Verif. cliente</th>
+
+      <th style="width:10%">Operador</th>
+
+      <th style="width:7%">Verificado</th>
+
+      <th style="width:7%">Acciones</th>
+
+    </tr>
+
+  </table>
+
+<!--
+
+<div class="debug">
+
+  Debug:
+
+{{$scope.resultados_destino | json}}
+
+</div>
+
+-->
+
+</div>
+

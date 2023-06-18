@@ -1,0 +1,51 @@
+<!--template de lista de paises-->
+<div class="container">
+
+<p><h4>Paises</h4>
+  <input type="text" ng-model="busq1" placeholder=" Buscar..." auto-focus>
+</p>
+
+<table width="100%" class="table table-sm table-hover">
+	<tr>
+   <th>Código</th>
+   <th>Nombre</th>
+   <th>Moneda</th>
+   <th>Observaciones</th>
+   <th>Acción</th>
+ </tr>
+ <tr ng-repeat="x in resultados | filter:busq1">
+  <td><a title="Ver detalles" href="#!/pais/{{ x.codigo }}">{{ x.codigo }}</a></td>
+  <td><a title="Ver detalles" href="#!/pais/{{ x.codigo }}">{{ x.nombre }}</a></td>
+<!--TODO. colocar  campo moneda, con link a ver/editar datos pais-->
+ <!--<td><a title="Ver + detalles" href="#!/pais/{{ x.cod_moneda }}">{{ x.cod_moneda }}</a></td>
+  -->
+  <td><a title="Ver detalles de moneda" href="#!/moneda/{{ x.cod_moneda }}">{{ x.cod_moneda }}</a></td>
+  <td>{{ x.observ }}</td>
+  <!--TODO. pendiente-->
+  <td><a title="Ver ciudades de este país" href="#!/ciudades/{{ x.codigo }}">Ver ciudades</a></td>
+</table>
+
+<div>
+
+  <button class="button2" type="button" ng-click="new()">Agregar</button>
+
+<!--opciones.
+  <a title="Agregar moneda" href="#!/moneda/new">Agregar</a>
+
+ b, que ctrl de paises cambie url a pais/new
+  <a title="Agregar registro" href="#!/paises/new">Agregar</a>
+-->
+</div>
+
+</div>
+
+<!--
+    <td><a title="Ver detalles" href="#!/user/?login={{ x.login }}">{{ x.nombre }}</a></td>
+    <td><a title="Enviar mensaje" href="#!/user/?login={{ x.login }}">{{ x.email }}</a></td>
+    <td><a href="#!/user/{{ x.login }}">Ver más detalles</a></td>
+  -->
+
+    <!--TODO. agregar datos y hacer link a datos por pais y ciudad
+    <td><a title="(+) Listar usuarios de este pais" href="#!/user/">{{ x.pais }}</a></td>
+    <td><a title="(+) Listar usuarios de esta ciudad" href="#!/user/">{{ x.ciudad }}</a></td>
+  -->

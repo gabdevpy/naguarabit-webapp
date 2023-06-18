@@ -1,0 +1,80 @@
+  <div class="">
+    <h3>Ejemplo validacion por filas (ngForm ngRepeat Issue)</h3>
+    <form name="testForm" class="form-horizontal" novalidate>
+          <table class="table table-condensed table-hover">
+            <thead>
+              <tr>
+                <th>Index</th>
+                <th>Name</th>
+                <th>Name Required</th>
+                <th>Name Invalid</th>
+                <th class="col-sm-1"></th>
+                <th>Color</th>
+                <th>Color Invalid</th>
+                <!--th>Delete</th-->
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="item in items">
+                <td>
+                  {{$index}}
+                </td>
+                <!--name-->
+                <td ng-class="{ 'has-errors' : testForm['itemName' + $index].$invalid} ">
+                  <!--&& testForm['itemName' + $index].$touched
+                                                                                       && testForm['itemName' + $index].$dirty-->
+                  <input class="col-sm-1" type="text" name="itemName{{$index}}" class="form-control" ng-model="item.name" required />
+                  <div class="help-block"
+                  ng-show="testForm['itemName' + $index].$invalid"
+                  ng-messages="testForm['itemName'+$index].$error"
+                  ng-if="testForm['nameRequired'+ $index].$modelValue == true"
+                  >
+                    <span ng-message="required">Name is required</span>
+                  </div>
+                </td>
+                
+                <!-- creacion de columna nameRequired de tipo hidden, indica si el campo name ES obligatorio-->
+                <td>
+                  <input type="hidden" name="nameRequired{{$index}}" ng-model="item.nameRequired" class="form-control" />
+                  <!--arma una variable con el valor del json -->
+                  {{testForm['nameRequired'+$index].$modelValue == true}}
+                </td>
+                
+                <!-- evaluacion de columna itemName, si es invalido para mostrar mensaje-->
+                <td>
+                  {{testForm['itemName'+$index].$invalid}}
+                </td>
+
+                <td class="col-sm-1" ></td>
+
+                                <!--COLOR-->
+                <td ng-class="{ 'has-error' : testForm['itemColor' + $index].$invalid }">
+                  <input type="text" name="itemColor{{$index}}" class="form-control" ng-model="item.color" required />
+                  <div class="help-block" ng-show=" testForm['itemColor' + $index].$invalid" ng-messages="testForm['itemColor'+$index].$error">
+                    <span ng-message="required">Color is required</span>
+                  </div>
+                </td>
+                <td><!-- resultado de evaluacion de columna itemColor-->
+                  {{testForm['itemColor'+$index].$invalid}}
+                </td>
+
+                <!--borrar fila
+                <td>
+                  <div ng-show="!$last" ng-click="deleteItem($index)">
+                    <a>
+                      <span class="glyphicon glyphicon-remove text-danger"></span>
+                    </a>
+                  </div>
+                </td>
+                -->
+              </tr>
+            </tbody>
+          </table>
+      <!--div class="form-group">
+        <div class="col-sm-12">
+          <button class="btn btn-default" ng-click="deleteFirstItem()">Delete First Item</button>
+          <button class="btn btn-default" ng-click="fillInLastItem()">Fill In Last Item</button>
+        </div>
+      </div-->
+    </form>
+  </div>

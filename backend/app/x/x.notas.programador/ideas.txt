@@ -1,0 +1,14 @@
+IDEAS
+* Integrar aqui la grafica de Yadio-Today, en la Calculadora
+
+*colocar indicadores de paridad, aparte de los numeros. embebidos.
+asi los operadores lo ven sin salir de la plataforma.
+ej de :https://bitcoinaverage.om
+widgets
+graficas
+
+*transacciones.
+colocar indicadores numericos en los filtros.
+ejemplos:
+pago origen pendiente (3)
+pago origen por verificar (3)

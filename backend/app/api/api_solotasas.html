@@ -1,0 +1,93 @@
+<!--usando bootstrap-->
+<!--- This line is just linking the bootstrap thingie in the file. The real thing starts below -->
+<div class="container">
+  <div class="row">
+    <!--columna 1, izquierda-->
+    <div class="col-sm-6" style="align-content: left">
+
+			<div class="form-group" ng-class="{'has-error': myForm.myDecimal.$invalid}">
+				<h3>Referencia para Tasas de Cambio</h3>
+
+				<div name="divMensajeCarga" ng-show="!dataOk" class="exito-element animate-show-hide">
+					<p>Cargando información...</p>
+				</div>
+
+			<div name="formAPI1" ng-show="dataOk">
+				<form>
+			<span style="color: blue">Bitcoin/Bs.    </span><span style="font-weight: bold; align-text:right">{{BTC_VES_sell | number:0.0}}</span>
+			<br/><br/>
+			<span style="color: green">Bitcoin/$USD  </span><span style="font-weight: bold">{{ BTC_USD_price | number:0.0}}</span>
+			<br/><br/>
+			<span style="color: red">$USD/Bs.       </span><span style="font-weight: bold">{{ USD_VES_rate | number:0.0}}</span>
+			<br/><br/>
+			<span style="color: red">$USD/PYG       </span><span style="font-weight: bold">{{ USD_PYG | number:0.0}}</span>
+			<br>
+			<br>
+			<a href="https://api.yadio.io/json/" target="_BLANK">Confirmar Info</a>
+			</form>
+			<br/>
+
+			</div>
+
+			<br>
+			<div name="formAPI1" ng-show="dataOk">
+				<form>
+			<span style="color: orange">Bitcoin/PYG = </span><span style="font-weight: bold">{{ BTC_PYG_high | number:0.2}}</span>
+			<br/><hr/>
+			<span style="color: orange">% dif respecto costo BTC con trader</span>
+			<input type="number" ng-model="data2.porctrader" step="0.01" size="6" min="0.01" max="20.00" maxlength="6"
+			ng-change="calcValorAjustado()"
+			 style="max-width:150px">
+			<br/><br/>
+			<!--valor ajustado significa paridad BTC/PYG comparado con localbitcoins compra
+			por ahora se tiene que registrar manualmente
+			-->
+			<span style="color: orange">Bitcoin/PYG ajustado <br>(comparar <b>compra</b> en localbitoins) </span><br>
+			<span style="font-weight: bold">{{ BTC_PYG_ajustado | number:0.2}}</span>
+
+			<br><br>
+			<a href="https://apiv2.bitcoinaverage.com/widgets/global/ticker/BTCPYG" target="_BLANK">Confirmar Info</a>
+	
+			</form>
+			</div>
+			</div>
+		</div>
+
+<!--2da columna, izquierda-->
+		<div class="col-sm-2">
+      <!--
+			<div style="margin:0 auto; float:right">
+      -->
+			<h4>Herramientas</h4>
+			<ul>
+				<li><a href="https://yadio.io/calc.html" target="_BLANK">Calculadora Yadio</a></li>
+			    <li><a href="https://yadio.io/today.html" target="_BLANK">Gráfica Hoy</a></li>
+					<li><a href="https://yadio.io/charts.html" target="_BLANK">Gráfica Hist. Bs / BTC / $USD</a></li>
+					<!--
+					<li><a href="https://api.yadio.io/json/" target="_BLANK">Fuente API 1</a></li>
+					<br/>
+					<li><a href="https://apiv2.bitcoinaverage.com/widgets/global/ticker/BTCPYG" target="_BLANK">Fuente API 2</a></li>
+					<br/>
+					<a href="api/graficaBTC_PYG.html" target="_BLANK">Gráfico de Referencia (temporal)</a>
+				-->
+			</ul>
+
+			<h3>Prueba de Calculadora</h3>
+			Gs:  <br>
+			Bs:  <br>
+			USD: <br>
+		</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<!--PRUEBAS
+VES: {{ data.VES }}
+DATA: {{ data }}<br/>
+<input ng-model="BTC_VES_sell | number" disabled="true">
+<b>{{ saludo}}</b>
+-->

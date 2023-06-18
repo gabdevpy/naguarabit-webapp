@@ -1,0 +1,42 @@
+/*aqui estan los estilos generales del sitio, para las listas*/
+body{
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+h1{
+	 color: blue;
+}
+h2{
+	 color: orange;
+   text-align: center;
+}
+h3{
+	 color: blue;
+}
+height: 3px;{
+	 color: orange;
+}
+table {
+  width: 100%;
+}
+table, th , td  {
+  border-collapse: collapse;
+  padding: 5px;
+  /*border-top: 1px solid #ddd;*/
+  vertical-align: top;
+  text-align: left;
+  text-size-adjust: 100%;
+}
+table tr:nth-child(odd) {
+	background-color: #f1f1f1;
+	color: rgb(51, 51, 51);
+	border-collapse: collapse;
+	border-top-color: rgb(221, 221, 221);
+	border-top-style: solid;
+	border-top-width: 1px;
+}
+table tr:nth-child(even) {
+	background-color: #ffffff;
+	border-top-color: rgb(221, 221, 221);
+	border-top-style: solid;
+	border-top-width: 1px;
+}

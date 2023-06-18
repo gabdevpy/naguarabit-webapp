@@ -1,0 +1,47 @@
+<!--Calculadora/Resumen-->
+<p>
+</p>
+<br/>
+<!--TODO. colocar bandera --flecha-> bandera-destino-->
+<span>De: </span><span style="font-weight: bold">{{data.nombre_pais1}}</span>
+<br/>
+<span>A:  </span><span style="font-weight: bold">{{data.nombre_pais2}}</span>
+<br/><br/>
+<span>Monto a enviar: &nbsp;</span>
+<span style="font-weight: bold">{{(data.monto1 | number : 0.0) + ' ' + data.simbolo_moneda1 }}</span><span> ({{data.nombre_plural_moneda1}})</span>
+<br/>
+<span>Monto a recibir: &nbsp;</span>
+<span style="font-weight: bold">{{(data.monto2 | number : 0.0) + ' ' + data.simbolo_moneda2}}</span><span> ({{data.nombre_plural_moneda2}})</span>
+<br>
+
+<hr>
+<h4>Pago en destino</h4>
+<span>Banco: {{destino.codbank}}</span><br>
+<span>Nombre Titular: {{destino.nombretitular}}</span><br>
+<span>Documento: {{destino.doctitular}}</span><br>
+<span>Email: {{destino.email}}</span><br>
+<!--TODO. buscar nombre de banco con el codigo-->
+<span>Tipo de cuenta: {{destino.tipocta}}</span><br>
+<span>Nro de cuenta: {{destino.nrocta}}</span><br>
+<span>Observaciones: <br></span>
+<span ng-if="destino.observ != '' ">
+{{ destino.observ}}</span><br>
+<br>
+
+<a href="#">Adjuntar pago</a>
+
+
+<!--TODO. agregar boton cancelar transaccion-->
+
+<!--TODO.
+Confirma todos los datos relacionados a la transaccion.<br>
+opcional. agregar boton imprimir para generar resumen en texto, o pdf<br>
+
+Al confirmar, el sistema le notificara por correos a los involucrados en el proceso:
+*cliente
+*operador en pais origen<br>
+*operador en pais destino<br>
+</p>
+-->
+
+<!--TODO. mostrar saludo acorde-->

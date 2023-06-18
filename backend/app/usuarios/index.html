@@ -1,0 +1,48 @@
+<!--template de lista de usuarios-->
+<div class="container">
+
+<p><h4>Usuarios</h4>
+  <input type="text" ng-model="busq1" placeholder=" Buscar..." auto-focus>
+</p>
+
+<table width="100%"  class="table table-sm table-hover">
+	<tr>
+	  <th>Login</th>
+	  <th>Nombre</th>
+	  <th>email</th>
+    <th>Pais</th>
+    <!--
+    <th>Ciudad</th>
+  -->
+	</tr>
+  <tr ng-repeat="x in resultados | filter:busq1">
+    <td><a title="Ver + detalles" href="#!/user/{{ x.login }}">{{ x.login }}</a></td>
+    <td><a title="Ver + detalles" href="#!/user/{{ x.login }}">{{ x.nombre }}</a></td>
+    <td><a title="Enviar mensaje (+)" href="#!/user/{{ x.login }}">{{ x.email }}</a></td>
+    <td><a title="Ver detalles del pais (+)" href="#!/pais/{{ x.cod_pais }}">{{ x.cod_pais }}</a></td>
+
+    <!--TODO. analizar cuando usar target="_BLANK"-->
+    <!--TODO, colocar link para eliminar-->
+    <!--
+    <td><a title="Ver perfil completo de usuario" href="#!/user/{{ x.login }}">Ver + detalles</a></td>
+  -->
+  </tr>
+</table>
+
+<div>
+  <button class="button2" type="button" ng-click="new()">Agregar</button>
+</div>
+
+</div>
+
+<!--
+  <a title="Agregar registro" href="#!/user/new">Agregar</a>
+    <td><a title="Ver detalles" href="#!/user/?login={{ x.login }}">{{ x.nombre }}</a></td>
+    <td><a title="Enviar mensaje" href="#!/user/?login={{ x.login }}">{{ x.email }}</a></td>
+    <td><a href="#!/user/{{ x.login }}">Ver más detalles</a></td>
+-->
+
+    <!--TODO. agregar datos y hacer link a datos por pais y ciudad
+    <td><a title="(+) Listar usuarios de este pais" href="#!/user/">{{ x.pais }}</a></td>
+    <td><a title="(+) Listar usuarios de esta ciudad" href="#!/user/">{{ x.ciudad }}</a></td>
+    -->

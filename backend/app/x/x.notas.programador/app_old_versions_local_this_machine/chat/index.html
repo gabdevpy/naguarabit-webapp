@@ -1,0 +1,73 @@
+<!--div align="left"-->
+<div class="container" style="width: 75 %">
+ <h3>Remesa # {{id_transaccion}}</h3>
+ <h5>Usuario {{uuid}} <img class="circle" src="{{avatarUrl(uuid)}}" alt="{{user + $scope.uuid}}"/>
+</h5><br>
+<br>
+
+<!-- (Usuario: {{uuid}})<br> 
+ <img src="{{avatarUrl(uuid)}}" alt="{{user + $scope.uuid}}"/>
+<div class="form-horizontal">
+-->
+
+<div class="row" ng-repeat="message in messages">
+ <div class="col-sm-1" title="foto o avatar del usuario">
+  <img class="circle" src="{{avatarUrl(message.sender_uuid)}}" alt="{{message.sender_uuid}}" />
+</div>
+<div class="col-sm-7">
+ <p class="text-lg-left">
+   <span class="title text-primary font-weight-bold">{{ message.sender_uuid }}:</span>
+ </p>
+ <p class="text-lg-left">
+   <span class="title text-secondary">{{ message.content }}</span>
+ </p>
+ <p class="font-italic text-right text-success" title="Según hora de Venezuela">{{ message.date | date:"dd MMM yyyy ' a las ' h:mm a"}}</p>
+ <!--p>{{ message.date | date:"MM/dd/yyyy '-' h:mma"}}<br> {{ message.content }}</p-->
+ <hr>
+</div>
+<div class="col-sm-7">
+</div>
+</div> 
+
+<!--
+<div ng-controller="chatCtrl">
+-->
+<div class="container"><!--class="message-form"-->
+ <form  class="container" ng-submit="sendMessage()">
+   <i class="prefix mdi-communication-chat"></i>
+   <input class="input-sm form-control col-sm-10" ng-model="messageContent" type="text" placeholder="Escribe mensajes y adjunta tu/s comprobante/s..."/>
+
+   <span class="chip left">
+     <img class="circle" src="{{avatarUrl(uuid)}}" alt="{{user + $scope.uuid}}"/>
+     usuario #{{uuid}}
+   </span>
+
+   <div class="input-field col s2" ng-show="showUploader==false">
+     <button type="submit" class="waves-effect waves-light btn-floating btn-large">Enviar
+       <i class="mdi-content-send">Enviar</i>
+     </button>
+   </div>
+   <br>
+   <br>
+
+<!--btn bi bi-paperclip-->
+   <button type="button" class="btn-small btn-paperclip" ng-click="showUploader=true" ng-show="showUploader==false">Adjuntar Archivo <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-paperclip" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M4.5 3a2.5 2.5 0 0 1 5 0v9a1.5 1.5 0 0 1-3 0V5a.5.5 0 0 1 1 0v7a.5.5 0 0 0 1 0V3a1.5 1.5 0 1 0-3 0v9a2.5 2.5 0 0 0 5 0V5a.5.5 0 0 1 1 0v7a3.5 3.5 0 1 1-7 0V3z"></path>
+</svg></button>
+
+   <div id="showupload" ng-if="showUploader==true">
+      <input type="file" id="file_uploader"><br/>
+     <div class="input-field col s2" ng-if="showUploader==true">
+       <button type="button" ng-click="sendFile(); listarArchivos()" class="waves-effect waves-light btn-floating btn-large">ENVIAR
+         <i class="mdi-content-send"></i>
+       </button>
+       <br>
+       <button type="button" ng-click="showUploader=false">Cancelar adjunto</button>
+       <!-- class="bi bi-x-circle-fill"-->
+     </div>
+   </div>
+   <br>
+
+</form>
+
+</div>

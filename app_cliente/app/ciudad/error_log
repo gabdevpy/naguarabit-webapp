@@ -1,0 +1,4 @@
+[16-Jul-2021 14:59:35 America/New_York] PHP Notice:  Undefined index: observ in /home/naguarab/public_html/backend/app/ciudad/update.php on line 57
+[16-Jul-2021 14:59:35 America/New_York] PHP Notice:  Undefined index: cod_pais in /home/naguarab/public_html/backend/app/ciudad/update.php on line 64
+[16-Jul-2021 14:59:39 America/New_York] PHP Notice:  Undefined index: observ in /home/naguarab/public_html/backend/app/ciudad/update.php on line 57
+[16-Jul-2021 14:59:39 America/New_York] PHP Notice:  Undefined index: cod_pais in /home/naguarab/public_html/backend/app/ciudad/update.php on line 64

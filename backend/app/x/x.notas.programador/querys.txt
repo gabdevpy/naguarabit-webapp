@@ -1,0 +1,17 @@
+querys.txt
+---
+
+listar pagos en destino de una transaccion especifica:
+SELECT *
+FROM pago_destino a
+INNER JOIN transacciones b ON a.id_transaccion = b.id
+WHERE id_transaccion=4
+
+---
+totalizar pagos en destino:
+SELECT count(*) as nro_pagos, sum(a.monto) FROM pago_destino a INNER JOIN transacciones b ON a.id_transaccion = b.id WHERE id_transaccion=4
+
+\
+---
+insertar pago en destino, con datos basicos:
+INSERT INTO `pago_destino` (`id_transaccion`, `login_user`, `cod_pais`, `monto`, `cod_banco`, `nroctabank`) VALUES ('3', 'ja.aguilar', 'VEN', '26000', 'PROV', '0108121211212121212')

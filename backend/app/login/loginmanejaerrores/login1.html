@@ -1,0 +1,22 @@
+<div class="row">
+<h3>Acceso al Sistema</h3>
+<!--: {{ saludo}}</p-->
+
+<!--h3>Ejemplo de form login con mensajes de error</h3-->
+
+<!--p>Ingrese sus datos: <br-->
+<form name="login">
+      <label>Password</label>
+      <input ng-model="password" required />
+      <br>
+      <label>Confirmar password</label>
+      <input ng-model="confirmPassword" name="confirmPassword" use-form-error="isNotSame" use-error-expression="password && confirmPassword && password!=confirmPassword" required />
+      <div ng-show="login.$error.isNotSame" class="errors">Passwords Do Not Match!</div>
+      <div ng-messages="login.confirmPassword.$error" class="errors">
+        <div ng-message="isNotSame">
+          Passwords No coinciden
+          <!--Do Not Match (from ng-message)!-->
+        </div>
+      </div>
+    </form>
+</div>

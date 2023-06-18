@@ -1,0 +1,19 @@
+<div ng-app="ExampleApp">
+  <div ng-controller="ExampleController">
+
+    <form name="ExampleForm">
+      <label>Password</label>
+      <input ng-model="password" required />
+      <br>
+      <label>Confirm password</label>
+      <input ng-model="confirmPassword" name="confirmPassword" use-form-error="isNotSame" use-error-expression="password && confirmPassword && password!=confirmPassword" required />
+      <div ng-show="ExampleForm.$error.isNotSame" class="errors">Passwords Do Not Match!</div>
+      <div ng-messages="ExampleForm.confirmPassword.$error" class="errors">
+        <div ng-message="isNotSame">
+          Passwords Do Not Match (from ng-message)!
+        </div>
+      </div>
+    </form>
+
+  </div>
+</div>

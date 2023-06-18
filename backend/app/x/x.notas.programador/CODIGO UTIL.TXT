@@ -1,0 +1,9 @@
+ //TODO. manejar saltos de linea en valor del campo
+  .")";
+
+    //-$outp .= ',"observ":"'  . $rs["observ"]  . '"';
+  //$observ = str_replace( "\n", '<br />', $rs["observ"]); 
+
+  //reemplaza saltos de linea, pues rompen el objeto json
+  $observ = str_replace(array("\r\n", "\r", "\n"), " ", $rs["observ"]); 
+  $outp .= ',"observ":"'  . $observ  . '"';

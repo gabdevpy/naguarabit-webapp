@@ -1,0 +1,60 @@
+  <div><!--template resumen de una transaccion, modo vista operador-->
+<form name="form1" align="left" ><!-- novalidate -->
+  <div class="form-group"><!--TODO. colocar bandera --flecha-> bandera-destino-->
+    <h3>Resumen de Transacción</h3>
+		<span>Referencia: <span style="font-weight: bold">{{data.origen_codpais + data.destino_codpais + '-' + data.referencia}}</span>
+    <br/>
+    <span>Usuario: <a title="Nombre: {{data.user_nombre}}" href="#!/user/{{ data.login }}">{{data.login}}</a></span>
+    <br/>
+		<span>Estatus: <span style="font-weight: bold" title="Código estatus: {{data.status}}">{{data.status_desc}}</span>
+    <br/>
+
+<span>De: <span style="font-weight: bold">{{data.origen_pais_nombre}}</span>
+<br/>
+<span>A: <span style="font-weight: bold">{{data.destino_pais_nombre}}</span></span>
+<br/>
+<hr>
+<span>Monto dólares:</span>
+<span style="font-weight: bold">{{'USD ' + (data.monto_dolares | number : 1.2) }} </span>
+<br>
+<span>Monto enviado:</span>
+<!--todo, falta especificar simbolo de moneda de la bd-->
+<span style="font-weight: bold">{{data.origen_cod_moneda + '. ' + (data.origen_monto | number : 0.0) }}</span>
+<br/>
+<span>Monto a recibir:</span>
+<!--todo, falta especificar simbolo de moneda de la bd-->
+<span style="font-weight: bold">{{data.destino_cod_moneda + '. ' + (data.destino_monto | number : 0.0) }}</span>
+</div>
+
+    <div class="form-group">
+      <select name="accion" ng-model="x.accion" class="form-control input-sm" ng-change="ejecutarAccion()">
+        <option value="">-Elegir acción general-</option>
+        <option value="C">Cancelar Operación</option>
+        <option value="C">Enviar correo a cliente</option>
+        <option value="C">Enviar correo a operador</option>
+      </select>
+    </div>
+</form>
+
+<br><br>
+<!--<h5>Pagos en destino</h5>-->
+<div>
+  <div ng-include="'transacc/destino.html'"></div>
+</div>
+
+</div>
+
+<!--TODO. agregar boton cancelar transaccion-->
+
+<!--TODO.
+Confirma todos los datos relacionados a la transaccion.<br>
+opcional. agregar boton imprimir para generar resumen en texto, o pdf<br>
+
+Al confirmar, el sistema le notificara por correos a los involucrados en el proceso:
+*cliente
+*operador en pais origen<br>
+*operador en pais destino<br>
+</p>
+-->
+
+<!--TODO. mostrar saludo acorde-->

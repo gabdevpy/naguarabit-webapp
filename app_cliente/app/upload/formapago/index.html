@@ -1,0 +1,75 @@
+<!--bancos/index.hml, vista para editar lista de bancos-->
+<div>
+<div name="divform" ng-show="showForm"> 
+  <form><!-- novalidate -->
+    <h3>Forma de pago</h3>
+    <br>Nombre *<br>
+    <input name="nombre" type="text" ng-model="data.nombre"readonly>
+    <br>
+
+    <br>Codigo *<br>
+    <input id="login" name="codigo" type="text" ng-model="data.codigo" readonly>
+    <!--auto-focus="{{ focusInput }}" value="auto-focus on"-->
+    <br>
+    <br>Símbolo<br>
+    <input name="simbolo" type="text" ng-model="data.simbolo"  auto-focus>
+  
+    <br>
+    <br>Nombre plural<br>
+    <input name="nombre_plural" type="text" ng-model="data.nombre_plural">
+    <br>
+    <br>
+
+    <button type="button" class="button2"  ng-click="save()">Guardar</button>
+<br/>
+
+  </form>
+
+<!--datos ocultos, dos formas de obtenerlos-->
+  <div style="visibility: hidden;">
+    <input name="id" type="hidden" ng-model="data.id">
+    <span name="pais_id" >data.id:{{data.id}}</span>
+  </div>
+
+  <p>
+    <a href="#!/paises/">&lt;&lt;&lt; Regresar a lista</a>
+  </p>
+
+</div>
+
+<!--debug-->
+  <!--
+  <p>(debug) data => {{ data }}</p>
+  <p>master = {{ master }}</p>
+-->
+
+<!--para test mensajes
+Show error: <input type="checkbox" ng-model="showError" aria-label="Toggle ngShow"><br />
+Show exito: <input type="checkbox" ng-model="mostrarExito" aria-label="Toggle ngShow"><br />
+-->
+<!--TODO. usar este bloque div para los mensajes, donde aplicar estilo: centrado, posicion, etc.
+<div class="ng-pristine" style="align-self: center; text-align: center; align-content: center">
+-->
+
+<div name="divMsjNoRegistro" ng-show="showErrorNotFound" class="error-element animate-show-hide">
+<p>{{msg}}</p>
+</div>
+
+<div name="divMensajeExito" ng-show="mostrarExito" class="exito-element animate-show-hide">
+<p>{{msg}}</p>
+<p>
+  <a href="#!/paises">Regresar a lista</a>
+</p>
+</div>
+
+<div name="divMensajeError" ng-show="showError == true" class="error-element animate-show-hide">
+<p>Message Operation: {{msg}}</p>
+
+<!--debug. mostrar todo estos datos si el nivel de depuracion de la app es DEBUG-ALL. colocarlo dentro de otro div-->
+<p>StatusCode: {{statusval}}</p>
+<p>Status: {{statustext}}</p>
+<p>Response Headers: {{headers}}</p>
+</div>
+
+</div>
+</div>

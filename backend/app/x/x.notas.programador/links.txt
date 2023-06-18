@@ -1,0 +1,10 @@
+https://s3.amazonaws.com/dolartoday/data.json
+API dolar today, trae el valor referencia de BTC en Bs:
+Y el valor del dolar paralelo
+
+---
+https://getbootstrap.com/docs/4.1/components/buttons/
+---
+https://stackoverflow.com/questions/16251977/angularjs-toggle-button
+---
+https://demo.mobiscroll.com/angularjs/select/group-options#

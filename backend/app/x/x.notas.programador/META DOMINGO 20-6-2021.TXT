@@ -1,0 +1,13 @@
+NAGUARABIT. META DOMINGO 20/6/2021
+
+MOSTRAR RESUMEN DE 1 TRANSACCION
+=33% COMPLETOAD
+
+EJEMPLO:
+http://localhost/naguarabit/app/#!/transacc/2
+
+resumen> LISTO
+
+pago a destino
+
+pago origen
