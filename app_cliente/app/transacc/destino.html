@@ -44,11 +44,11 @@
 
       <th>Comprobante/s</th>
 
-      <th title="Verificado por operador">Verif. Operador</th>
+      <th title="Verificado por operador">Confirmado Operador</th>
 
       <th style="width:7%">Operador</th>
 
-      <th style="width:7%" title="Verificado por el cliente o el beneficiario">Verif. cliente</th>
+      <th style="width:7%" title="Verificado por el cliente o el beneficiario">Confirmado cliente</th>
 
       <th style="width:7%">Acciones</th>
 
@@ -97,7 +97,7 @@
 
   <td style="text-align:center; padding-right:35px" ng-if="x.check_realizado != 1">
 
-    <span class="badge badge-pill badge-danger" title="El operador NO ha realizado este pago todavía">NO</span>
+    <span class="badge badge-pill badge-warning" title="El operador NO ha realizado este pago todavía">NO</span>
 
   </td>
 
@@ -137,13 +137,13 @@
 
   <td style="text-align:center; padding-right:35px" ng-if="x.check_realizado >= 1">
 
-    <span class="badge badge-pill badge-primary" title="El operador ya realizó y notificó este pago">SI</span>
+    <span class="badge badge-pill badge-primary" title="El operador ya confirmó este pago">SI</span>
 
   </td>
 
   <td style="text-align:center; padding-right:35px" ng-if="x.check_realizado == 0">
 
-    <span class="badge badge-pill badge-danger" title="El operador ya realizó y notificó este pago">NO</span>
+    <span class="badge badge-pill badge-warning" title="El operador NO ha confirmado este pago">NO</span>
 
   </td>  
 
@@ -151,7 +151,7 @@
 
         <!--operador-->
 
-        <td><a title="Ver detalles del operador >> nombre al menos" href="#!/user/{{ x.login_user_pagador }}">{{ x.login_user_pagador }}</a></td>
+        <td><a title="Ver detalles del operador..." href="#!/user/{{ x.login_user_pagador }}">{{ x.login_user_pagador }}</a></td>
 
 
 
@@ -161,11 +161,11 @@
 
         <span ng-if="x.check_user_cliente == 1" class="badge badge-pill badge-success"
 
-        title="El cliente ya verifico/confirmo que llegó este pago al destinatario">SI</span>
+        title="El cliente Confirmó que llegó este pago al destinatario">SI</span>
 
         <span ng-if="x.check_user_cliente != 1" class="badge badge-pill badge-danger"
 
-        title="El cliente no ha verificado/confirmado que llegó este pago al destinatario">NO</span>
+        title="El cliente NO ha confirmado que llegó este pago al destinatario">NO</span>
 
       </td>
 
@@ -207,14 +207,21 @@
 
       <a
 
+      ng-if="x.check_realizado != 1"
+
+      class="badge badge-pill badge-warning" role="button"
+
+      title="El operador realizará el pago y te notificará con captura del comprobante">Esperar...</a>
+
+      <!--a
+
       ng-if="x.check_realizado != 1" 
 
       class="badge badge-pill badge-danger text-white" role="button"
 
       href="#!/chat/{{ x.id }}" 
 
-      title="El operador debe realizar el pago y notificarlo con captura del comprobante">Pagar</a>
-
+      title="El operador debe realizar el pago y notificarlo con captura del comprobante">Pagar</a-->
 
 
       <a
@@ -225,7 +232,7 @@
 
       href="#!/chat/{{ x.id }}" 
 
-      title="El operador debe revisar los datos y captura de pago y confirmar. Si hubo algún error se debe corregir mnediante esta opción">Verificar Pago</a>
+      title="Aquí puedes confirmar si llegó el pago al destino. Si hubo algún error indica que no.">Confirmar recepción</a>
 
     </td>
 
