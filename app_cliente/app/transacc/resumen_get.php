@@ -2,7 +2,7 @@
 
 /*
 devuelve un objeto json con el resumen de de una transaccion
-usage:
+uso:
 transacc/get_resumen.php?id=ID_TRANSACC
 */
 
@@ -10,18 +10,13 @@ header("Access-Control-Allow-Origin: *");
 
 header("Content-Type: application/json; charset=UTF-8");
 
-
-
 include("../bd/connection.php");
-
-
 
 //obtener parametro get de URL
 
 if (isset($_GET['id'])){
 
   $id = $_GET['id'];
-  //*echo 'resumen_get.php';
   //*echo $id;
 
 }else{
@@ -37,15 +32,12 @@ echo $outp;
 if (!isset($id)  || $id == ""){
 
   $outp ='{"records":['.$outp.']}';
-  //*echo '3';
   //*echo $outp;
 
 }
 
 else{
 
-  //*echo 'else';
-  
   //get details from one transaccion
 
   $sql = "SELECT b.nombre user_nombre, p.nombre origen_pais_nombre, p2.nombre destino_pais_nombre, \n"
@@ -73,8 +65,6 @@ else{
       . "LIMIT 1";
 
   //*echo '' . $sql;
-  //+$result = $conn->query($sql);
-
 
   $result = $conn->query($sql);
 
@@ -152,4 +142,3 @@ $conn->close();
 echo($outp);
 
 ?>
-
