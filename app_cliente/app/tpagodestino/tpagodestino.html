@@ -1,0 +1,146 @@
+  <div><!--template resumen de una transaccion, modo vista operador-->
+
+    <form name="form1" align="left" ><!-- novalidate -->
+
+      <div class="form-group"><!--TODO. colocar bandera --flecha-> bandera-destino-->
+
+        <h3>Detalles del Pago</h3>
+
+        <span>Referencia: <span style="font-weight: bold"><a title="Ver detalles de la transacción"
+
+      href="#!/transaccion/{{data.id}}">{{data.origen_codpais + data.destino_codpais + '-' + data.referencia}}</a></span>
+
+        <br/>
+
+        <span>Usuario: <a title="Nombre: {{data.user_nombre}}" href="#!/user/{{ data.login }}">{{data.login}}</a></span>
+
+        <br/>
+
+        <span>Estatus: <span style="font-weight: bold" title="Código estatus: {{data.status}}">{{data.status_desc}}</span>
+
+        <br/>
+
+
+
+        <span>De: <span style="font-weight: bold">{{data.origen_pais_nombre}}</span>
+
+        <br/>
+
+        <span>A: <span style="font-weight: bold">{{data.destino_pais_nombre}}</span></span>
+
+        <br/>
+
+        <hr>
+
+        <span>Monto dólares:</span>
+
+        <span style="font-weight: bold">{{'USD ' + (data.monto_dolares | number : 2) }} </span>
+
+        <br>
+
+        <span>Monto enviado:</span>
+
+        <!--todo, falta especificar simbolo de moneda de la bd-->
+
+        <span style="font-weight: bold">{{data.origen_cod_moneda + '. ' + (data.origen_monto | number : 0) }}</span>
+
+        <br/>
+
+        <span>Monto a recibir:</span>
+
+        <!--todo, falta especificar simbolo de moneda de la bd-->
+
+        <span style="font-weight: bold">{{data.destino_cod_moneda + '. ' + (data.destino_monto | number : 2) }}</span>
+
+      </div>
+
+      <hr>
+
+      <div class="form-group">
+
+        <h4>Acciones</h4>
+
+        <a href="#!/chat/{{ data.id }}"><i class="bi bi-chat">Ir al chat</i></a>
+
+        <br>
+
+        <!--TODO. si es el cliente, aqui podrá pagar en destino-->
+        <a href="#"><i class="bi bi-chat">Realizar Pago en Origen</i></a>
+
+        <br>
+
+        <!-- TODO. por ahora cliente no deberia poder cancelar la operacion, hasta que se programe el dialog/modal o pantalla para realizarlo-->
+        <!--a href="#"><i class="bi bi-chat">Cancelar Operación</i></a-->
+
+
+
+        <!--TODO. agregar esta opcion mensaje al operador--->
+
+        <!--a href="#!/chat/{{ data.id }}"><i class="bi bi-chat">Escribir al Operador</i></a-->
+
+
+
+      <!--select name="accion" ng-model="x.accion" class="form-control input-sm" ng-change="ejecutarAccion()">
+
+        <option value="">Elegir una acción...</option>
+
+        <option value="CHAT">Ir al chat</option>
+
+        <option value="CANC">Cancelar Operación</option>
+
+        <option value="MCLI">*Escribir al cliente</option>
+
+        <option value="MOPER">*Escribir al operador</option>
+
+      </select-->
+
+    </div>
+
+  </form>
+
+
+
+  <br><br>
+
+  <!--<h5>Pagos en destino</h5>-->
+
+  <div>
+
+    <div ng-include="'transacc/destino.html'"></div>
+
+  </div>
+
+
+
+</div>
+
+
+
+<!--TODO. agregar boton cancelar transaccion-->
+
+
+
+<!--TODO.
+
+Confirma todos los datos relacionados a la transaccion.<br>
+
+opcional. agregar boton imprimir para generar resumen en texto, o pdf<br>
+
+
+
+Al confirmar, el sistema le notificara por correos a los involucrados en el proceso:
+
+*cliente
+
+*operador en pais origen<br>
+
+*operador en pais destino<br>
+
+</p>
+
+-->
+
+
+
+<!--TODO. mostrar saludo acorde-->
+

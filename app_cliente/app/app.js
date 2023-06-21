@@ -36,6 +36,8 @@ angular.module('myApp', [
   
   ,'myApp.bancos'
 
+  ,'myApp.transaccPagoDestino'
+
   //,'ui.bootstrap.demo'
 
 ])
