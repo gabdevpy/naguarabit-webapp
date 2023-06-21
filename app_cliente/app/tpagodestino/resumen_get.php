@@ -54,11 +54,12 @@ else{
 
        . "FROM pago_destino a \n"
 
-       . "INNER JOIN transacciones t ON a.id_transaccion = t.id \n"
+       //TODO. POR SEGURIDAD HAY QUE PASAR TMB ESTE PARAMETRO Y REVISAR SI EL PAGO COINCIDE CON ALGUNA TRANSACCION
+       //. "INNER JOIN transacciones t ON a.id_transaccion = t.id \n"
 
        . "LEFT  JOIN banks_pais    b ON b.codigo = a.cod_banco \n"
 
-       . "WHERE a.id_transaccion=" . $id . "\n";
+       . "WHERE a.id=" . $id . "\n";
 
       
 
