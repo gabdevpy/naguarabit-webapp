@@ -62,13 +62,19 @@
 
         <h4>Acciones</h4>
 
-        <a href="#!/chat/{{ data.id }}"><i class="bi bi-chat">Ir al chat</i></a>
-
+        <!--cambiar a que sea un boton/badge con color verde: info-success-->
+        <a href="#!/chat/{{ data.id }}"><i class="bi bi-chat">Confirmar Pago</i></a>
         <br>
 
-        <!--TODO. si es el cliente, aqui podrá pagar en destino-->
-        <a href="#"><i class="bi bi-chat">Realizar Pago en Origen</i></a>
+        <!--cambiar a que sea un boton/badge con color rojo: info-danger-->
+        <a href="#!/chat/{{ data.id }}"><i class="bi bi-chat">Rechazar Pago</i></a>
+        <br>
 
+        <!--cambiar a que sea un boton/badge con color yellow: info-warning-->
+        <a href="#!/chat/{{ data.id }}"><i class="bi bi-chat">Reclamar Pago</i></a>
+        <br>
+
+        <a href="#!/chat/{{ data.id }}"><i class="bi bi-chat">Hablar con operador</i></a>
         <br>
 
         <!-- TODO. por ahora cliente no deberia poder cancelar la operacion, hasta que se programe el dialog/modal o pantalla para realizarlo-->
