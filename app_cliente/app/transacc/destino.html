@@ -224,15 +224,21 @@
       title="El operador debe realizar el pago y notificarlo con captura del comprobante">Pagar</a-->
 
 
+      <!--TODO. cuando cliente quiere confirmar pago destino recibido, se muestra formulario adicional-->
       <a
 
       ng-if="x.check_realizado == 1" 
 
       class="badge badge-pill badge-primary text-white" role="button"
 
-      href="#!/chat/{{ x.id }}" 
+      href="#!/tpagodestino/{{ x.id }}" 
+
+      ng-click="showFormConfirmPagoDestino(x.id)"
 
       title="Aquí puedes confirmar si llegó el pago al destino. Si hubo algún error indica que no.">Confirmar recepción</a>
+
+
+
 
     </td>
 
